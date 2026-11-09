@@ -29,6 +29,9 @@ Las reglas de contenido (estilo IMPACTO, rigor, titulares, horarios, registro) e
 4. `git add`, commit y `git push origin main`. El workflow arranca solo.
 5. Comprobar que el run terminó bien: `curl -s https://api.github.com/repos/MiquelGilEsteve/elcafedeschrodinger/actions/runs?per_page=1`; luego `git pull` y revisar visualmente `posts/<id>/img/01.jpg` (¿salió la foto?, ¿encuadre?, ¿texto legible?). Si algo está mal: corregir, borrar `img/` y volver a subir.
 
+## Borradores
+- Un `post.json` con `"borrador": true` se renderiza (con fotos) pero NO se publica. Sirve para enseñarle la imagen a Miquel antes. Al aprobarlo: quitar `borrador` y ajustar `publicar`. Cuenta como franja ocupada.
+
 ## Rehacer o anular un post
 - Rehacer imágenes: borrar `posts/<id>/img/` y subir.
 - Anular: borrar la carpeta del post antes de su hora.
