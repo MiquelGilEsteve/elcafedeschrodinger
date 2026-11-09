@@ -4,6 +4,14 @@ Este repositorio publica **automáticamente** en Instagram (sin revisión de Miq
 
 Las reglas de contenido (estilo IMPACTO, rigor, titulares, horarios, registro) están en la guía del proyecto de claude.ai «Cuenta Instagram tecnología»: `claude/guia.md` y `claude/fuentes.md`.
 
+## Estilo pedido por Miquel (2026-11-09) — manda sobre la guía
+- **Todos los posts sensacionalistas, pero verdaderos.** Ya no «1 de cada 3»: SIEMPRE titular de máximo impacto en la portada.
+  Técnicas: la cifra más llamativa primero (62 %, 481 m, 4.100 millones de años), «por primera vez», récords, contrastes, consecuencias concretas.
+  Ejemplo: mejor «Los expertos dan un *62 %* de probabilidad a un desastre causado por la IA antes de 2050» que «Dicen que la IA podría acabar con la humanidad. Esto es lo que dicen los datos».
+  Límites que no cambian: cada cifra verificada en la fuente original; si un dato tiene letra pequeña (definiciones, condiciones), se cuenta en la diapositiva 2 o 3; nada falso ni engañoso; en salud, nada alarmista (Meta lo penaliza).
+- **Portada SIEMPRE con foto real** si existe alguna con licencia libre que muestre el tema o algo directamente relacionado (lugar, objeto, nave, animal, máquina). Para temas abstractos (IA, matemáticas…), una foto real relacionada (p. ej. un superordenador de la NASA). Nunca fotos de personas famosas, de películas o de medios.
+- Truco Wikimedia: `https://commons.wikimedia.org/wiki/Special:FilePath/<Nombre_del_archivo.jpg>` redirige al archivo original (GitHub sigue la redirección). Comprobar antes la licencia en la página del archivo.
+
 ## Añadir una publicación
 0. **La carpeta `posts/` es también el registro de lo ya publicado** (los que tienen `publicado.json`): no repitas tema ni categoría del día anterior mirando ahí y en el registro de la guía. Primera publicación real: 2026-11-09, «La IA y el fin de la humanidad: los datos» (categoría IA).
    **Antes de nada, mira la cola** (`posts/*/post.json` sin `publicado.json`): si ya hay un post para la franja de hoy (España o LATAM), no prepares otro para esa franja; prepara solo la que falte. Ejemplo: el martes 2026-11-10 la franja de España (14:00) ya la ocupa la Voyager, así que ese día solo se prepara el post de LATAM.
