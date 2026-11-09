@@ -13,13 +13,16 @@ import datetime as dt, json, os, pathlib, sys, time
 import requests
 
 RAIZ = pathlib.Path(__file__).resolve().parents[1]
-API = "https://graph.instagram.com/v25.0"
 MAX_RETRASO_H = 6
 TOKEN = os.environ.get("IG_ACCESS_TOKEN", "")
 USER = os.environ.get("IG_USER_ID", "")
 REPO = os.environ.get("GITHUB_REPOSITORY", "")
 RAMA = os.environ.get("RAMA", "main")
 DRY = os.environ.get("DRY_RUN") == "1"
+# Los tokens de Instagram (inicio de sesión con Instagram/unificado) empiezan por "IG" y van contra graph.instagram.com;
+# los de Facebook (empiezan por "EAA") van contra graph.facebook.com. IG_API_HOST permite forzarlo.
+HOST = os.environ.get("IG_API_HOST") or ("graph.facebook.com" if TOKEN.startswith("EAA") else "graph.instagram.com")
+API = f"https://{HOST}/v25.0"
 
 def url_publica(ruta):
     rel = ruta.relative_to(RAIZ).as_posix()
