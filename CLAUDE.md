@@ -5,6 +5,7 @@ Este repositorio publica **automáticamente** en Instagram (sin revisión de Miq
 Las reglas de contenido (estilo IMPACTO, rigor, titulares, horarios, registro) están en la guía del proyecto de claude.ai «Cuenta Instagram tecnología»: `claude/guia.md` y `claude/fuentes.md`.
 
 ## Añadir una publicación
+0. **Antes de nada, mira la cola** (`posts/*/post.json` sin `publicado.json`): si ya hay un post para la franja de hoy (España o LATAM), no prepares otro para esa franja; prepara solo la que falte. Ejemplo: el martes 2026-11-10 la franja de España (14:00) ya la ocupa la Voyager, así que ese día solo se prepara el post de LATAM.
 1. Carpeta `posts/AAAA-MM-DD_<es|latam>_<tema>/` con un `post.json` (formato en README.md). Campos clave:
    - `publicar`: fecha y hora ISO **con desfase**. España: `+01:00` en horario de invierno, `+02:00` en verano. LATAM: 20:00 de Ciudad de México = `T20:00:00-06:00`.
    - `audiencia`: `ES` o `LATAM`.
