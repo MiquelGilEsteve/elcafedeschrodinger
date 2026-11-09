@@ -107,7 +107,8 @@ def imagen(d, h_img):
         ph = f'<div class="ph" style="background-image:url({b64(d["foto"])});background-position:{pos}"></div>'
     else:
         ph = d.get("svg", "")
-    cred = f'<div class="cred" style="top:{h_img-300}px">{H.escape(d["credito"])}</div>' if d.get("credito") else ""
+    # El crédito solo se muestra si de verdad hay foto (no sobre la ilustración de reserva)
+    cred = f'<div class="cred" style="top:{h_img-300}px">{H.escape(d["credito"])}</div>' if d.get("credito") and d.get("foto") else ""
     return f'<div class="img" style="height:{h_img}px">{ph}</div><div class="fade" style="top:{h_img-360}px;height:360px"></div>{cred}'
 
 # El texto se ajusta solo: empieza grande y baja de tamaño hasta caber en el alto máximo.
