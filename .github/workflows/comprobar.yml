@@ -1,0 +1,19 @@
+name: Comprobar conexión con Instagram (no publica)
+
+on:
+  push:
+    paths: ["comprobar.txt"]
+  workflow_dispatch:
+
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Comprobar token y cuenta
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+        run: |
+          pip install -q requests
+          python scripts/comprobar.py
