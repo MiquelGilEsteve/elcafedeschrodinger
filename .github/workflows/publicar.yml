@@ -1,0 +1,79 @@
+name: Preparar y publicar en Instagram
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"   # cada 15 min (GitHub puede retrasarlo unos minutos)
+  push:
+    paths: ["posts/**"]
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Simulación (no publica nada)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publicar
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: ¿Hay algo pendiente?
+        id: pend
+        run: |
+          python3 - >> "$GITHUB_OUTPUT" <<'PY'
+          import json, pathlib, datetime as dt
+          ahora = dt.datetime.now(dt.timezone.utc); render = due = 0
+          for c in pathlib.Path("posts").iterdir():
+              f = c / "post.json"
+              if not f.exists() or (c / "publicado.json").exists(): continue
+              if not (c / "img" / "01.jpg").exists(): render += 1
+              elif dt.datetime.fromisoformat(json.loads(f.read_text())["publicar"]) <= ahora: due += 1
+          print(f"render={render}"); print(f"due={due}")
+          PY
+
+      - name: Instalar dependencias
+        if: steps.pend.outputs.render != '0'
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq fonts-inter
+          pip install -q playwright pillow requests
+          python -m playwright install --with-deps chromium
+
+      - name: Preparar imágenes (descarga fotos reales y renderiza)
+        if: steps.pend.outputs.render != '0'
+        run: python scripts/preparar.py
+
+      - name: Guardar imágenes en el repositorio (tienen que ser públicas para Instagram)
+        if: steps.pend.outputs.render != '0'
+        run: |
+          git config user.name "cafe-bot"; git config user.email "cafe-bot@users.noreply.github.com"
+          git add posts
+          git diff --cached --quiet || (git commit -m "Imágenes preparadas" && git push)
+
+      - name: Publicar los que toca
+        if: steps.pend.outputs.due != '0' || steps.pend.outputs.render != '0'
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          RAMA: ${{ github.ref_name }}
+          DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
+        run: |
+          pip install -q requests
+          python scripts/publicar.py
+
+      - name: Guardar estado
+        if: always() && (steps.pend.outputs.due != '0' || steps.pend.outputs.render != '0')
+        run: |
+          git add posts
+          git diff --cached --quiet || (git commit -m "Publicado en Instagram" && git push)
