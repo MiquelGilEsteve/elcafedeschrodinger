@@ -75,6 +75,9 @@ if __name__ == "__main__":
         if not f.exists() or (carpeta / "publicado.json").exists() or not (carpeta / "img" / "01.jpg").exists():
             continue
         post = json.loads(f.read_text(encoding="utf-8"))
+        if post.get("borrador"):
+            print(f"[{carpeta.name}] borrador pendiente de aprobación: no se publica")
+            continue
         cuando = dt.datetime.fromisoformat(post["publicar"])
         if cuando > ahora:
             continue

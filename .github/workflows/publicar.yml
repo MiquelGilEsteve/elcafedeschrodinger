@@ -39,7 +39,7 @@ jobs:
               f = c / "post.json"
               if not f.exists() or (c / "publicado.json").exists(): continue
               if not (c / "img" / "01.jpg").exists(): render += 1
-              elif dt.datetime.fromisoformat(json.loads(f.read_text())["publicar"]) <= ahora: due += 1
+              elif not json.loads(f.read_text()).get("borrador") and dt.datetime.fromisoformat(json.loads(f.read_text())["publicar"]) <= ahora: due += 1
           print(f"render={render}"); print(f"due={due}")
           PY
 
