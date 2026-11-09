@@ -66,8 +66,6 @@ def publicar(carpeta, post):
     return resultado
 
 if __name__ == "__main__":
-    if not DRY and not (TOKEN and USER and REPO):
-        sys.exit("Faltan IG_ACCESS_TOKEN, IG_USER_ID o GITHUB_REPOSITORY")
     ahora = dt.datetime.now(dt.timezone.utc); fallos = 0
     for carpeta in sorted((RAIZ / "posts").iterdir()):
         f = carpeta / "post.json"
@@ -80,6 +78,8 @@ if __name__ == "__main__":
         if ahora - cuando > dt.timedelta(hours=MAX_RETRASO_H):
             print(f"[{carpeta.name}] OMITIDO: su hora ({cuando}) pasó hace más de {MAX_RETRASO_H} h. Cambia 'publicar' si quieres sacarlo.")
             continue
+        if not DRY and not (TOKEN and USER and REPO):
+            fallos += 1; print(f"[{carpeta.name}] ERROR: toca publicarlo, pero faltan los secretos IG_ACCESS_TOKEN / IG_USER_ID."); continue
         print(f"[{carpeta.name}] publicando ({post.get('audiencia', '')})…")
         try:
             res = publicar(carpeta, post)
