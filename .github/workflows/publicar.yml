@@ -37,9 +37,10 @@ jobs:
           ahora = dt.datetime.now(dt.timezone.utc); render = due = 0
           for c in pathlib.Path("posts").iterdir():
               f = c / "post.json"
-              if not f.exists() or (c / "publicado.json").exists(): continue
-              if not (c / "img" / "01.jpg").exists(): render += 1
-              elif not json.loads(f.read_text()).get("borrador") and dt.datetime.fromisoformat(json.loads(f.read_text())["publicar"]) <= ahora: due += 1
+              if not f.exists(): continue
+              if not (c / "img" / "01.jpg").exists() or not (c / "img" / "story.jpg").exists(): render += 1
+              if (c / "publicado.json").exists(): continue
+              if (c / "img" / "01.jpg").exists() and not json.loads(f.read_text()).get("borrador") and dt.datetime.fromisoformat(json.loads(f.read_text())["publicar"]) <= ahora: due += 1
           print(f"render={render}"); print(f"due={due}")
           PY
 

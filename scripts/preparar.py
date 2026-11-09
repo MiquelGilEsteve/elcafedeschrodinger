@@ -41,10 +41,16 @@ def comprobar(post, carpeta):
         print(f"[{carpeta.name}] ERROR: {e}")
     return not errores
 
-def preparar(carpeta):
+def preparar(carpeta, solo_story=False):
     post = json.loads((carpeta / "post.json").read_text(encoding="utf-8"))
     if not comprobar(post, carpeta):
         return False
+    st, d1 = post.get("story"), post["diapositivas"][0]
+    if st is not None and not st.get("foto_url") and not st.get("foto") and not st.get("sin_foto"):
+        # la story usa la foto real de la portada si no tiene una propia
+        for k in ("foto_url", "foto", "credito"):
+            if d1.get(k): st[k] = d1[k]
+        if "foto_pos" not in st and d1.get("foto_pos"): st["foto_pos"] = d1["foto_pos"]
     fotos = carpeta / "fotos"; fotos.mkdir(exist_ok=True)
     piezas = list(enumerate(post["diapositivas"], 1)) + ([("story", post["story"])] if post.get("story") else [])
     for n, d in piezas:
@@ -67,15 +73,22 @@ def preparar(carpeta):
         asyncio.run(R.main(str(tmp / "post.json"), str(tmp / "png")))
         img = carpeta / "img"; img.mkdir(exist_ok=True)
         for png in sorted((tmp / "png").glob("*.png")):
+            if solo_story and not png.stem.endswith("_story"):
+                continue
             nombre = "story.jpg" if png.stem.endswith("_story") else png.stem.rsplit("_", 1)[-1] + ".jpg"
             Image.open(png).convert("RGB").save(img / nombre, "JPEG", quality=92, optimize=True)
-        shutil.copy(tmp / "png" / f"{post['id']}_texto.txt", carpeta / "pie.txt") if (tmp / "png" / f"{post['id']}_texto.txt").exists() else None
+        if not solo_story and (tmp / "png" / f"{post['id']}_texto.txt").exists():
+            shutil.copy(tmp / "png" / f"{post['id']}_texto.txt", carpeta / "pie.txt")
     print(f"[{carpeta.name}] listo: {len(list((carpeta / 'img').glob('*.jpg')))} imágenes")
     return True
 
 if __name__ == "__main__":
     ok = True
     for carpeta in sorted((RAIZ / "posts").iterdir()):
-        if (carpeta / "post.json").exists() and not (carpeta / "img" / "01.jpg").exists():
+        if not (carpeta / "post.json").exists():
+            continue
+        if not (carpeta / "img" / "01.jpg").exists():
             ok = preparar(carpeta) and ok
+        elif not (carpeta / "img" / "story.jpg").exists():  # rehacer solo la story
+            ok = preparar(carpeta, solo_story=True) and ok
     sys.exit(0 if ok else 1)
