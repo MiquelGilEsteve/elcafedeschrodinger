@@ -20,6 +20,7 @@ Las reglas de contenido (estilo IMPACTO, rigor, titulares, horarios, registro) e
    - `audiencia`: `ES` o `LATAM`.
    - `diapositivas` (5) con `texto`, y `svg` en todas (ilustración de reserva). Donde haya foto real: `foto_url`, `credito` y, si hace falta, `foto_pos` (p. ej. `"center 8%"`).
    - `story` y `pie` (≤ 2200 caracteres, ≤ 30 hashtags, siempre `#elcafedeschrodinger`).
+   - La story usa sola la foto de la portada (con su `foto_pos`); se puede cambiar con `foto_url`/`foto_pos` propios dentro de `story`. Si falta `img/story.jpg`, GitHub rehace solo la story.
    - `story_auto`: `false` mientras la cuenta sea de creador (la API solo publica stories en cuentas de empresa).
 2. **Fotos reales (`foto_url`)**: desde la sesión de Claude no se pueden descargar, pero GitHub Actions sí. Hay que dar la URL directa del archivo:
    - NASA Photojournal: abrir con WebFetch `https://science.nasa.gov/photojournal/<titulo>/` y usar el JPG de resolución completa: `https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/piaNN/piaNNNNN/PIANNNNN.jpg`. (La antigua `photojournal.jpl.nasa.gov/jpeg/...` ya no funciona.)
