@@ -34,9 +34,12 @@ Lista de fuentes para buscar temas y verificar datos. Se lee junto con `claude/g
 - **svs.gsfc.nasa.gov** (NASA Scientific Visualization Studio): WebFetch lee las páginas y da las URL directas de los archivos (JPG/PNG de alta resolución). Ejemplo: Black Marble 2016, la Tierra de noche (svs.gsfc.nasa.gov/30876). Galería de la Tierra de noche: svs.gsfc.nasa.gov/gallery/earthat-night-imagery/.
 - **Wikimedia Commons con Firecrawl**: abrir la categoría (p. ej. Category:Mules_in_Andalusia, Category:Pisco_Formation) para ver los archivos y luego la página File: para la licencia y la URL directa.
 - Artículos open access con licencia CC BY 4.0 (p. ej. Communications Biology): sus figuras se pueden reutilizar citando; las URL son media.springernature.com/full/… Ojo: suelen ser láminas con varios paneles y fondo blanco, poco aptas para portada.
+- **NOIRLab** (noirlab.edu/public/images/…): fotos de Gemini, Rubin, Kitt Peak, Cerro Tololo con licencia **CC BY 4.0** (página /public/copyright/); muchas están también en Commons (Category:Gemini_North_Observatory), mejor usar Commons con `Special:FilePath/…?width=2000` porque los originales de NOIRLab pesan cientos de MB (2026-11-12).
+- **PLOS ONE**: todo CC BY 4.0; figura directa en `journals.plos.org/plosone/article/figure/image?size=large&id=<doi>.g00N` (2026-11-12).
 - earthobservatory.nasa.gov ahora redirige a science.nasa.gov/earth/earth-observatory/.
 
 ## 4. Lo que no funciona en la sesión (proxy)
+- **2026-11-12: WebFetch no resolvía ningún dominio** (ENOTFOUND en sciencedaily.com, sci.news y agenciasinc.es). Todo se leyó con **Firecrawl** (`firecrawl_scrape` con `formats: ["query"]`, y `firecrawl_search` con `sources: ["news"]` para noticias recientes de Latinoamérica). Los enlaces de la portada de SINC daban 404 vía Firecrawl: buscar el tema con `firecrawl_search`.
 - WebFetch falla en: phys.org, scitechdaily.com, pnas.org, doi.org, nature.com, commons.wikimedia.org/wiki/File:… (url_not_found), krdo.com (robots), URL demasiado largas (juntadeandalucia.es). Varias se leen con Firecrawl (ver arriba).
 - Los enlaces de Google (google.com/url?…) no se pueden abrir: usar la URL directa de la web.
 - Para fotos: wikimedia, NASA Images, ESA, NOAA, NPS, USGS, svs.gsfc.nasa.gov, media.springernature.com… bloqueados para descargar desde la sesión (las descarga GitHub Actions).
