@@ -1,0 +1,19 @@
+Baterías de estado sólido: QuantumScape presenta Osprey, una celda que se cargó del 10 al 80 % en 5 minutos 🔋
+
+Las baterías de iones de litio de celulares y autos eléctricos llevan un electrolito líquido inflamable. Las de estado sólido lo sustituyen por un material sólido, y por eso se las considera la gran promesa: más seguras, con más capacidad y de carga más rápida.
+
+El 11 de noviembre, la empresa estadounidense QuantumScape (que ya licencia su tecnología a PowerCo, la filial de baterías de Volkswagen, y a Honda) presentó Osprey, su primera celda totalmente de estado sólido. Según sus primeras pruebas:
+• Carga del 10 al 80 % en 5 minutos.
+• 1.000 ciclos de carga completos conservando cerca del 80 % de la capacidad.
+• Funciona a presión normal (1 atmósfera) y hasta por debajo de −20 °C.
+
+La letra pequeña (según Electrek): la carga de 5 minutos se midió a 80 °C, y los ciclos, en celdas pequeñas de laboratorio de solo dos capas. Los datos son de la propia empresa, y no hay fecha para que llegue a autos. Samsung SDI, BYD y Toyota apuntan a producir sus primeras baterías de este tipo hacia 2027-2028.
+
+Y una cosa no cambia: siguen usando litio. Según el Servicio Geológico de EE. UU., Chile tiene 9,2 millones de toneladas de reservas de litio, Argentina 4,4 millones y Bolivia 23 millones de toneladas en recursos identificados.
+
+¿Cambiarías de auto o de celular por una batería que se cargue en 5 minutos?
+
+Fuentes: QuantumScape, nota de prensa (GlobeNewswire, 11-nov-2026) · Electrek, «QuantumScape unveils Osprey all-solid-state cell» (11-nov-2026) · USGS, Mineral Commodity Summaries 2026: Lithium.
+Fotos: conector de carga rápida, Phasmatisnox, CC BY-SA 4.0, Wikimedia Commons · laboratorio SABERS de la NASA, dominio público · Salar de Atacama, NASA Earth Observatory (Landsat 8), dominio público.
+
+#baterias #estadosolido #litio #autoselectricos #elcafedeschrodinger
