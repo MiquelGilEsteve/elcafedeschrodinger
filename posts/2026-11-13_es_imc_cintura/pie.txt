@@ -1,0 +1,21 @@
+IMC y obesidad: medir la cintura cambia el diagnóstico, según un estudio publicado en Nature con 844.108 adultos (51.269 de Cataluña) 📏
+
+El índice de masa corporal (IMC) se calcula solo con el peso y la altura, así que no distingue grasa de músculo ni dice dónde está la grasa. En 2025, una comisión de The Lancet propuso confirmar la obesidad también con la cintura y separar dos situaciones: obesidad «preclínica» (exceso de grasa con los órganos funcionando bien) y obesidad «clínica» (cuando ya hay daño o limitaciones: insuficiencia cardiaca, apnea del sueño, artrosis de rodilla o cadera, enfermedad renal…).
+
+Un equipo internacional, con investigadores del IdIBGi y la Universidad de Girona, el IDIAP Jordi Gol y el CIBEROBN, puso a prueba esa propuesta con datos de China, Reino Unido, EE. UU. y España. La parte española son 51.269 adultos de 18 a 74 años de la base de datos de atención primaria SIDIAP (Cataluña).
+
+Lo que encontraron:
+• Al sumar la cintura (102 cm o más en hombres, 88 cm en mujeres) y la relación cintura-altura, la obesidad en la muestra catalana pasó del 18,7 % al 26,1 %.
+• Según la cohorte, el IMC dejaba fuera a entre el 5,2 % y el 8,6 % de los participantes y clasificaba de más a entre el 1,2 % y el 3,1 %.
+• La obesidad clínica se asoció a un riesgo de muerte por cualquier causa un 69 % mayor; la preclínica, a un 19 % más.
+• Tener sobrepeso u obesidad solo según el IMC, con cintura normal, no se asoció a más mortalidad.
+• Entre el 77 % y el 91 % de quienes tenían obesidad preclínica no pasaron a la clínica en 10 años.
+
+La letra pequeña: es un estudio observacional y retrospectivo con historias clínicas electrónicas, y los propios autores avisan de que eso limita la precisión. No es un consejo médico: si te preocupa tu peso, consúltalo con tu médico.
+
+¿Crees que el IMC debería dejar de usarse solo?
+
+Fuente: Pan, A. et al., «Validation of clinical and preclinical obesity across global cohorts», Nature (11-nov-2026), doi:10.1038/s41586-026-11237-5.
+Foto: Niwehiv9, CC0, Wikimedia Commons.
+
+#obesidad #imc #salud #nutricion #elcafedeschrodinger
