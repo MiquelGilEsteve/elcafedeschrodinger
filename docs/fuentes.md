@@ -39,10 +39,13 @@ Lista de fuentes para buscar temas y verificar datos. Se lee junto con `claude/g
 - earthobservatory.nasa.gov ahora redirige a science.nasa.gov/earth/earth-observatory/.
 
 ## 4. Lo que no funciona en la sesión (proxy)
+- **2026-11-13: render local.** El entorno no traía `requests` y el Pillow del sistema estaba roto: `python -m pip install requests` y `python -m pip install --ignore-installed pillow`. No instalar `playwright` con pip (cambia la versión y no encuentra el Chromium preinstalado); si pasa, lanzar con `executable_path="/opt/pw-browsers/chromium"`.
 - **2026-11-12: WebFetch no resolvía ningún dominio** (ENOTFOUND en sciencedaily.com, sci.news y agenciasinc.es). Todo se leyó con **Firecrawl** (`firecrawl_scrape` con `formats: ["query"]`, y `firecrawl_search` con `sources: ["news"]` para noticias recientes de Latinoamérica). Los enlaces de la portada de SINC daban 404 vía Firecrawl: buscar el tema con `firecrawl_search`.
 - WebFetch falla en: phys.org, scitechdaily.com, pnas.org, doi.org, nature.com, commons.wikimedia.org/wiki/File:… (url_not_found), krdo.com (robots), URL demasiado largas (juntadeandalucia.es). Varias se leen con Firecrawl (ver arriba).
 - Los enlaces de Google (google.com/url?…) no se pueden abrir: usar la URL directa de la web.
 - Para fotos: wikimedia, NASA Images, ESA, NOAA, NPS, USGS, svs.gsfc.nasa.gov, media.springernature.com… bloqueados para descargar desde la sesión (las descarga GitHub Actions).
 
 ## 5. Ideas para el post de LATAM
+- **infobae.com/america/ciencia-america** (2026-11-13): buen índice de ciencia con foco latinoamericano, se lee con Firecrawl y enlaza el estudio original (así salieron los monos aulladores).
+- `firecrawl_search` con `sources: ["news"]` y `tbs: "qdr:w"` (última semana) da titulares recientes con fecha (2026-11-13).
 Si se quiere más contenido latinoamericano, se pueden probar (no comprobadas aún): National Geographic en Español (nationalgeographicla.com), Xataka México / Colombia, y notas de prensa de UNAM, CONICET o universidades chilenas y colombianas. Los fósiles de la Formación Pisco (Perú) salen a menudo en sci.news y Communications Biology.
