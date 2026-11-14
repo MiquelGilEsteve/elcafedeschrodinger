@@ -37,6 +37,7 @@ Lista de fuentes para buscar temas y verificar datos. Se lee junto con `claude/g
 - **NOIRLab** (noirlab.edu/public/images/…): fotos de Gemini, Rubin, Kitt Peak, Cerro Tololo con licencia **CC BY 4.0** (página /public/copyright/); muchas están también en Commons (Category:Gemini_North_Observatory), mejor usar Commons con `Special:FilePath/…?width=2000` porque los originales de NOIRLab pesan cientos de MB (2026-11-12).
 - **PLOS ONE**: todo CC BY 4.0; figura directa en `journals.plos.org/plosone/article/figure/image?size=large&id=<doi>.g00N` (2026-11-12).
 - **NOIRLab directo** (2026-11-14): las páginas noirlab.edu/public/images/<id>/ dan la URL `storage.noirlab.edu/media/archives/images/large/<id>.jpg` (≈1 MB, mejor que el original TIFF). Licencia CC BY 4.0. Las notas de prensa en español de NOIRLab se leen en newswise.com.
+- **Wikimedia y error 429 (2026-11-14):** si se rehace un post varias veces seguidas, GitHub Actions recibe «429 Too Many Requests» de upload.wikimedia.org y la foto sale con la ilustración SVG. Esperar 10-15 min antes de volver a subir, y usar `Special:FilePath/<archivo>?width=2000` (miniatura, más ligera) mejor que el original.
 - earthobservatory.nasa.gov ahora redirige a science.nasa.gov/earth/earth-observatory/.
 
 ## 4. Lo que no funciona en la sesión (proxy)
