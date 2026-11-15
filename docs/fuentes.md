@@ -52,3 +52,8 @@ Lista de fuentes para buscar temas y verificar datos. Se lee junto con `claude/g
 - **infobae.com/america/ciencia-america** (2026-11-13): buen índice de ciencia con foco latinoamericano, se lee con Firecrawl y enlaza el estudio original (así salieron los monos aulladores).
 - `firecrawl_search` con `sources: ["news"]` y `tbs: "qdr:w"` (última semana) da titulares recientes con fecha (2026-11-13).
 Si se quiere más contenido latinoamericano, se pueden probar (no comprobadas aún): National Geographic en Español (nationalgeographicla.com), Xataka México / Colombia, y notas de prensa de UNAM, CONICET o universidades chilenas y colombianas. Los fósiles de la Formación Pisco (Perú) salen a menudo en sci.news y Communications Biology.
+
+## 6. Notas 2026-11-15
+- **iugs-geoheritage.org** se lee con Firecrawl: fichas de cada sitio de patrimonio geológico (texto oficial con cifras) y la lista /designations/3/. Los PDF del libro (>50 MB) y del catálogo no se pueden leer.
+- **Trampa de fechas:** ScienceDaily repuso el 14-nov la nota de la URV sobre posos de café y biodiésel, que es de julio de 2026. También: el artículo del lince en Nature salió el 21-oct, aunque la nota del CSIC es del 6-nov. Mirar siempre la fecha del artículo original.
+- Para preparar el render en local hizo falta `pip install requests`, `pip install --ignore-installed pillow` y `pip install playwright==1.63.0`, lanzando Chromium con `executable_path=/opt/pw-browsers/chromium-1243/chrome-linux64/chrome`.
