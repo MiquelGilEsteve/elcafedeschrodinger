@@ -19,6 +19,7 @@ Las reglas de contenido (estilo IMPACTO, rigor, titulares, horarios, registro) e
 - Para comprobar un Reel: `ffmpeg -ss 1 -i posts/<id>/img/reel.mp4 -frames:v 1 f.png`. Al probar en local, borrar después `img/reel.mp4` y `img/reel_portada.jpg` junto con `img/`.
 
 ## Añadir una publicación
+**Antes de buscar temas, mira la sección «Temas pedidos por Miquel» de `docs/guia.md`: si hay un tema asignado a hoy, ese tiene prioridad.**
 0. **La carpeta `posts/` es también el registro de lo ya publicado** (los que tienen `publicado.json`): no repitas tema ni categoría del día anterior mirando ahí y en el registro de la guía. Primera publicación real: 2026-11-09, «La IA y el fin de la humanidad: los datos» (categoría IA).
    **Antes de nada, mira la cola** (`posts/*/post.json` sin `publicado.json`): si ya hay un post para la franja de hoy (España o LATAM), no prepares otro para esa franja; prepara solo la que falte. Ejemplo: el martes 2026-11-10 la franja de España (14:00) ya la ocupa la Voyager, así que ese día solo se prepara el post de LATAM.
 1. Carpeta `posts/AAAA-MM-DD_<es|latam>_<tema>/` con un `post.json` (formato en README.md). Campos clave:
