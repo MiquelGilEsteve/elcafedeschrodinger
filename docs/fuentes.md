@@ -57,3 +57,8 @@ Si se quiere más contenido latinoamericano, se pueden probar (no comprobadas a�
 - **iugs-geoheritage.org** se lee con Firecrawl: fichas de cada sitio de patrimonio geológico (texto oficial con cifras) y la lista /designations/3/. Los PDF del libro (>50 MB) y del catálogo no se pueden leer.
 - **Trampa de fechas:** ScienceDaily repuso el 14-nov la nota de la URV sobre posos de café y biodiésel, que es de julio de 2026. También: el artículo del lince en Nature salió el 21-oct, aunque la nota del CSIC es del 6-nov. Mirar siempre la fecha del artículo original.
 - Para preparar el render en local hizo falta `pip install requests`, `pip install --ignore-installed pillow` y `pip install playwright==1.63.0`, lanzando Chromium con `executable_path=/opt/pw-browsers/chromium-1243/chrome-linux64/chrome`.
+
+## 7. Notas 2026-11-16
+- WebFetch no resuelve astronomia.ign.es ni science.nasa.gov (ENOTFOUND) y Firecrawl no admite astronomia.ign.es: del IGN solo se lee el extracto con `firecrawl_search`. **imo.net/files/meteor-shower/cal2026.pdf** (calendario de lluvias de meteoros de la IMO) sí se lee con Firecrawl (`parsers: ["pdf"]`): horas de máximo, THZ y velocidades oficiales.
+- Fases de la Luna: proveedor Alexandria `aa-usno-navy-mil`, capacidad `astronomy/moon_phases` (opciones `start_date`, `count`).
+- science.org (resumen y frases exactas con `queryOptions.mode: "directQuote"`) se lee con Firecrawl.
