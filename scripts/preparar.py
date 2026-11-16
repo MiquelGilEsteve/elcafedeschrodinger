@@ -8,13 +8,15 @@ Para cada carpeta posts/<id>/ con post.json y sin img/01.jpg:
   4. Comprueba límites de Instagram (máx. 10 diapositivas, pie ≤ 2200 caracteres, ≤ 30 hashtags).
 Uso: python scripts/preparar.py
 """
-import asyncio, json, pathlib, re, shutil, sys, tempfile
+import asyncio, json, pathlib, re, shutil, subprocess, sys, tempfile
 import requests
 from PIL import Image
 
 RAIZ = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(RAIZ / "render"))
 import render_impacto as R  # noqa: E402
+
+SEG_REEL, FUNDIDO = 4.5, 0.5  # segundos por frase y duración del fundido (5 frases ≈ 20 s)
 
 UA = {"User-Agent": "elcafedeschrodinger-bot/1.0 (publicador de Instagram)"}
 
@@ -41,7 +43,25 @@ def comprobar(post, carpeta):
         print(f"[{carpeta.name}] ERROR: {e}")
     return not errores
 
-def preparar(carpeta, solo_story=False):
+def montar_reel(pngs, destino):
+    """Une los fotogramas con fundidos y añade una pista AAC en silencio (Instagram espera audio)."""
+    cmd = ["ffmpeg", "-y", "-loglevel", "error"]
+    for f in pngs:
+        cmd += ["-loop", "1", "-t", str(SEG_REEL), "-framerate", "30", "-i", str(f)]
+    total = len(pngs) * SEG_REEL - (len(pngs) - 1) * FUNDIDO
+    cmd += ["-f", "lavfi", "-t", f"{total:.2f}", "-i", "anullsrc=channel_layout=stereo:sample_rate=44100"]
+    filtro, prev = [], "[0:v]"
+    for i in range(1, len(pngs)):
+        sal = f"[v{i}]"
+        filtro.append(f"{prev}[{i}:v]xfade=transition=fade:duration={FUNDIDO}:offset={i * (SEG_REEL - FUNDIDO):.2f}{sal}")
+        prev = sal
+    filtro.append(f"{prev}format=yuv420p[v]")
+    cmd += ["-filter_complex", ";".join(filtro), "-map", "[v]", "-map", f"{len(pngs)}:a",
+            "-c:v", "libx264", "-profile:v", "high", "-preset", "medium", "-crf", "20", "-r", "30",
+            "-c:a", "aac", "-b:a", "64k", "-ar", "44100", "-t", f"{total:.2f}", "-movflags", "+faststart", str(destino)]
+    subprocess.run(cmd, check=True)
+
+def preparar(carpeta, solo_story=False, solo_reel=False):
     post = json.loads((carpeta / "post.json").read_text(encoding="utf-8"))
     if not comprobar(post, carpeta):
         return False
@@ -72,15 +92,28 @@ def preparar(carpeta, solo_story=False):
         (tmp / "post.json").write_text(json.dumps(post, ensure_ascii=False), encoding="utf-8")
         asyncio.run(R.main(str(tmp / "post.json"), str(tmp / "png")))
         img = carpeta / "img"; img.mkdir(exist_ok=True)
+        reel_pngs = sorted((tmp / "png").glob("*_reel[0-9][0-9].png"))
+        if reel_pngs and not solo_story:
+            montar_reel(reel_pngs, img / "reel.mp4")
+            Image.open(reel_pngs[0]).convert("RGB").save(img / "reel_portada.jpg", "JPEG", quality=90)
+            print(f"[{carpeta.name}] reel listo ({len(reel_pngs)} frases)")
         for png in sorted((tmp / "png").glob("*.png")):
+            if png in reel_pngs or solo_reel:
+                continue
             if solo_story and not png.stem.endswith("_story"):
                 continue
             nombre = "story.jpg" if png.stem.endswith("_story") else png.stem.rsplit("_", 1)[-1] + ".jpg"
             Image.open(png).convert("RGB").save(img / nombre, "JPEG", quality=92, optimize=True)
-        if not solo_story and (tmp / "png" / f"{post['id']}_texto.txt").exists():
+        if not (solo_story or solo_reel) and (tmp / "png" / f"{post['id']}_texto.txt").exists():
             shutil.copy(tmp / "png" / f"{post['id']}_texto.txt", carpeta / "pie.txt")
     print(f"[{carpeta.name}] listo: {len(list((carpeta / 'img').glob('*.jpg')))} imágenes")
     return True
+
+def falta_reel(carpeta):
+    if (carpeta / "publicado.json").exists() or (carpeta / "img" / "reel.mp4").exists():
+        return False
+    post = json.loads((carpeta / "post.json").read_text(encoding="utf-8"))
+    return post.get("reel", True) and not post.get("borrador")
 
 if __name__ == "__main__":
     ok = True
@@ -91,4 +124,6 @@ if __name__ == "__main__":
             ok = preparar(carpeta) and ok
         elif not (carpeta / "img" / "story.jpg").exists():  # rehacer solo la story
             ok = preparar(carpeta, solo_story=True) and ok
+        elif falta_reel(carpeta):  # posts pendientes sin Reel (preparados antes de existir los Reels)
+            ok = preparar(carpeta, solo_reel=True) and ok
     sys.exit(0 if ok else 1)

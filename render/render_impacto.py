@@ -134,6 +134,17 @@ def story(d):
             f'<div class="hand" style="bottom:90px"><i></i>{HANDLE[1:]}<i></i></div>')
     return f'<html><head><meta charset="utf-8"><style>{css(1920)}</style></head><body>{body}{AJUSTE}</body></html>'
 
+def reel(d, fuente=None):
+    """Fotograma vertical (1080x1920) de un Reel: imagen arriba y la frase en la zona segura
+    (Instagram tapa con su interfaz unos 380 px abajo y una columna de iconos a la derecha)."""
+    src = (f'<div class="src" style="bottom:330px;left:90px;right:150px;font-size:24px">Fuentes: {H.escape(fuente)}</div>'
+           if fuente else "")
+    h_img = 1050 if d.get("foto") else 920  # la ilustración SVG (1080x920) no se recorta por los lados
+    body = (imagen(d, h_img) + f'<div class="badge">{insignia()}</div>'
+            f'<div class="txt" data-f="{d.get("tam_reel", 104)}" data-max="{d.get("max_reel", 560)}" '
+            f'style="bottom:{430 if fuente else 400}px;left:80px;right:140px">{fmt(d["texto"])}</div>{src}')
+    return f'<html><head><meta charset="utf-8"><style>{css(1920)}</style></head><body>{body}{AJUSTE}</body></html>'
+
 async def main(src, out):
     global BASE, LOGO; BASE = pathlib.Path(src).resolve().parent
     post = json.loads(pathlib.Path(src).read_text(encoding="utf-8"))
@@ -146,6 +157,13 @@ async def main(src, out):
         for i, d in enumerate(post["diapositivas"], 1):
             await pg.set_content(slide(d)); await pg.wait_for_function("window.ajustado"); await pg.wait_for_timeout(100)
             await pg.screenshot(path=str(out / f"{post['id']}_{i:02d}.png"))
+        if post.get("reel", True):  # fotogramas del Reel (1080x1920), uno por diapositiva
+            await pg.set_viewport_size({"width": 1080, "height": 1920})
+            n = len(post["diapositivas"])
+            for i, d in enumerate(post["diapositivas"], 1):
+                await pg.set_content(reel(d, d.get("fuente") if i == n else None))
+                await pg.wait_for_function("window.ajustado"); await pg.wait_for_timeout(100)
+                await pg.screenshot(path=str(out / f"{post['id']}_reel{i:02d}.png"))
         if post.get("story"):
             await pg.set_viewport_size({"width": 1080, "height": 1920})
             await pg.set_content(story(post["story"])); await pg.wait_for_function("window.ajustado"); await pg.wait_for_timeout(100)

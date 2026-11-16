@@ -39,14 +39,14 @@ def api(metodo, ruta, **datos):
         raise RuntimeError(f"{metodo} {ruta}: {r.status_code} {r.text[:500]}")
     return r.json()
 
-def esperar(contenedor, intentos=30):
+def esperar(contenedor, intentos=30, pausa=5):
     for _ in range(intentos):
         estado = api("GET", contenedor, fields="status_code").get("status_code")
         if estado == "FINISHED":
             return
         if estado in ("ERROR", "EXPIRED"):
             raise RuntimeError(f"contenedor {contenedor}: {estado}")
-        time.sleep(5)
+        time.sleep(pausa)
     raise RuntimeError(f"contenedor {contenedor}: no terminó a tiempo")
 
 def publicar(carpeta, post):
@@ -59,6 +59,23 @@ def publicar(carpeta, post):
     esperar(car)
     pub = api("POST", f"{USER}/media_publish", creation_id=car)["id"]
     resultado = {"media_id": pub, "publicado_utc": dt.datetime.now(dt.timezone.utc).isoformat()}
+    reel = carpeta / "img" / "reel.mp4"
+    if post.get("reel", True) and reel.exists():  # Reel tras el carrusel (por defecto, «Reel de prueba»)
+        try:
+            datos = {"media_type": "REELS", "video_url": url_publica(reel), "caption": post.get("pie", "")}
+            portada = carpeta / "img" / "reel_portada.jpg"
+            if portada.exists():
+                datos["cover_url"] = url_publica(portada)
+            if post.get("reel_prueba", True):
+                datos["trial_params"] = json.dumps({"graduation_strategy": "SS_PERFORMANCE"})
+            else:
+                datos["share_to_feed"] = "true"
+            r = api("POST", f"{USER}/media", **datos)["id"]
+            esperar(r, intentos=40, pausa=15)  # los vídeos tardan más en procesarse
+            resultado["reel_id"] = api("POST", f"{USER}/media_publish", creation_id=r)["id"]
+            resultado["reel_prueba"] = bool(post.get("reel_prueba", True))
+        except Exception as e:
+            resultado["reel_error"] = str(e); print("   AVISO reel:", e)
     story = carpeta / "img" / "story.jpg"
     if post.get("story_auto") and story.exists():  # las stories por API solo funcionan en cuentas de empresa
         try:
