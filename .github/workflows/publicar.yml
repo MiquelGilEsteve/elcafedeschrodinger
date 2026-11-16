@@ -39,6 +39,7 @@ jobs:
               f = c / "post.json"
               if not f.exists(): continue
               if not (c / "img" / "01.jpg").exists() or not (c / "img" / "story.jpg").exists(): render += 1
+              elif not (c / "publicado.json").exists() and not json.loads(f.read_text()).get("borrador") and json.loads(f.read_text()).get("reel", True) and not (c / "img" / "reel.mp4").exists(): render += 1
               if (c / "publicado.json").exists(): continue
               if (c / "img" / "01.jpg").exists() and not json.loads(f.read_text()).get("borrador") and dt.datetime.fromisoformat(json.loads(f.read_text())["publicar"]) <= ahora: due += 1
           print(f"render={render}"); print(f"due={due}")
@@ -47,7 +48,7 @@ jobs:
       - name: Instalar dependencias
         if: steps.pend.outputs.render != '0'
         run: |
-          sudo apt-get update -qq && sudo apt-get install -y -qq fonts-inter
+          sudo apt-get update -qq && sudo apt-get install -y -qq fonts-inter ffmpeg
           pip install -q playwright pillow requests
           python -m playwright install --with-deps chromium
 
