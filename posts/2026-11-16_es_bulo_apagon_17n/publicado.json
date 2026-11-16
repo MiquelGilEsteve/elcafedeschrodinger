@@ -1,0 +1,5 @@
+{
+ "media_id": "18114510005334820",
+ "publicado_utc": "2026-11-16T20:29:19.871392+00:00",
+ "reel_error": "POST 17841469235464718/media: 400 {\"error\":{\"message\":\"Application does not have permission for this action\",\"code\":10,\"type\":\"OAuthException\",\"error_subcode\":2207081,\"is_transient\":false,\"error_user_msg\":\"Parece que la cuenta de Instagram no cumple el requisito de seguidores de reels de prueba para crear ese tipo de reels.\",\"error_user_title\":\"El reel de prueba no tiene suficientes seguidores\",\"fbtrace_id\":\"AagI7XE34aX9hjyBk0dsybF\"}}"
+}
