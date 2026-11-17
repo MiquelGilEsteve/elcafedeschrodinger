@@ -1,0 +1,6 @@
+{
+ "desde_utc": "2026-11-17T06:46:50+00:00",
+ "hasta_utc": "2026-11-17T10:46:50+00:00",
+ "post": "2026-11-16_latam_hantavirus_patagonia",
+ "error": "POST media_publish: 403 code 4, subcode 2207051 «Application request limit reached / se ha bloqueado la acción» (apuntado a mano por Claude)"
+}

@@ -14,6 +14,10 @@ import requests
 
 RAIZ = pathlib.Path(__file__).resolve().parents[1]
 MAX_RETRASO_H = 6
+# Si Instagram bloquea la acción (código 4 / subcódigo 2207051, «se ha bloqueado la acción»), insistir cada 15 min
+# puede alargar el bloqueo: se apunta en posts/_bloqueo_instagram.json y no se reintenta hasta pasadas PAUSA_BLOQUEO_H horas.
+PAUSA_BLOQUEO_H = 4
+BLOQUEO = RAIZ / "posts" / "_bloqueo_instagram.json"
 TOKEN = os.environ.get("IG_ACCESS_TOKEN", "")
 USER = os.environ.get("IG_USER_ID", "")
 REPO = os.environ.get("GITHUB_REPOSITORY", "")
@@ -95,6 +99,12 @@ def publicar(carpeta, post):
 
 if __name__ == "__main__":
     ahora = dt.datetime.now(dt.timezone.utc); fallos = 0
+    if BLOQUEO.exists() and not DRY:
+        b = json.loads(BLOQUEO.read_text(encoding="utf-8"))
+        hasta = dt.datetime.fromisoformat(b["hasta_utc"])
+        if ahora < hasta:
+            print(f"Instagram bloqueó la publicación ({b.get('error', '')[:200]}). En pausa hasta {hasta} UTC; borra {BLOQUEO.name} para reintentar antes.")
+            sys.exit(0)
     for carpeta in sorted((RAIZ / "posts").iterdir()):
         f = carpeta / "post.json"
         if not f.exists() or (carpeta / "publicado.json").exists() or not (carpeta / "img" / "01.jpg").exists():
@@ -119,4 +129,10 @@ if __name__ == "__main__":
             print(f"[{carpeta.name}] OK {res}")
         except Exception as e:
             fallos += 1; print(f"[{carpeta.name}] ERROR: {e}")
+            if "2207051" in str(e) and not DRY:
+                hasta = ahora + dt.timedelta(hours=PAUSA_BLOQUEO_H)
+                BLOQUEO.write_text(json.dumps({"desde_utc": ahora.isoformat(), "hasta_utc": hasta.isoformat(),
+                                               "post": carpeta.name, "error": str(e)}, indent=1), encoding="utf-8")
+                print(f"   Bloqueo de Instagram: no se reintenta hasta {hasta} UTC.")
+                break
     sys.exit(1 if fallos else 0)
