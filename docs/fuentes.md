@@ -62,3 +62,8 @@ Si se quiere más contenido latinoamericano, se pueden probar (no comprobadas a�
 - WebFetch no resuelve astronomia.ign.es ni science.nasa.gov (ENOTFOUND) y Firecrawl no admite astronomia.ign.es: del IGN solo se lee el extracto con `firecrawl_search`. **imo.net/files/meteor-shower/cal2026.pdf** (calendario de lluvias de meteoros de la IMO) sí se lee con Firecrawl (`parsers: ["pdf"]`): horas de máximo, THZ y velocidades oficiales.
 - Fases de la Luna: proveedor Alexandria `aa-usno-navy-mil`, capacidad `astronomy/moon_phases` (opciones `start_date`, `count`).
 - science.org (resumen y frases exactas con `queryOptions.mode: "directQuote"`) se lee con Firecrawl.
+
+## 8. Notas 2026-11-17
+- Tecnología de consumo: las fuentes oficiales se leen con Firecrawl: support.apple.com (artículos de ayuda), apple.com/ios/feature-availability/ (mejor con `formats: ["query"]` y `mode: "directQuote"`, la página es enorme), blog.google, support.google.com y meta.com/help/… (ayuda de las gafas). Las pruebas «independientes» de traductores que salen en buscadores suelen ser blogs de marcas (livelingo, dymesty, aircaps): no usarlas como fuente.
+- Commons: `Special:MediaSearch` (commons.wikimedia.org/w/index.php?search=…&title=Special:MediaSearch&type=image) con Firecrawl `formats: ["links"]` da la lista de archivos File:… para luego comprobar la licencia.
+- Desde la sesión, curl a commons.wikimedia.org sigue dando 403 (proxy): las fotos solo se ven cuando renderiza GitHub.
