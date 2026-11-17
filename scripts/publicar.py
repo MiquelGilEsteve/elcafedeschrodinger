@@ -41,11 +41,12 @@ def api(metodo, ruta, **datos):
 
 def esperar(contenedor, intentos=30, pausa=5):
     for _ in range(intentos):
-        estado = api("GET", contenedor, fields="status_code").get("status_code")
+        r = api("GET", contenedor, fields="status_code,status")
+        estado = r.get("status_code")
         if estado == "FINISHED":
             return
-        if estado in ("ERROR", "EXPIRED"):
-            raise RuntimeError(f"contenedor {contenedor}: {estado}")
+        if estado in ("ERROR", "EXPIRED"):  # "status" trae el motivo (p. ej. «Error: 2207026»)
+            raise RuntimeError(f"contenedor {contenedor}: {estado} ({r.get('status', 'sin detalle')})")
         time.sleep(pausa)
     raise RuntimeError(f"contenedor {contenedor}: no terminó a tiempo")
 
@@ -54,9 +55,16 @@ def publicar(carpeta, post):
     hijos = []
     for p in imgs:
         c = api("POST", f"{USER}/media", image_url=url_publica(p), is_carousel_item="true")["id"]
-        esperar(c); hijos.append(c)
+        try:
+            esperar(c)
+        except RuntimeError as e:
+            raise RuntimeError(f"diapositiva {p.name}: {e}") from None
+        hijos.append(c)
     car = api("POST", f"{USER}/media", media_type="CAROUSEL", children=",".join(hijos), caption=post.get("pie", ""))["id"]
-    esperar(car)
+    try:
+        esperar(car)
+    except RuntimeError as e:
+        raise RuntimeError(f"carrusel (pie/hijos): {e}") from None
     pub = api("POST", f"{USER}/media_publish", creation_id=car)["id"]
     resultado = {"media_id": pub, "publicado_utc": dt.datetime.now(dt.timezone.utc).isoformat()}
     reel = carpeta / "img" / "reel.mp4"
