@@ -1,6 +1,6 @@
 {
- "desde_utc": "2026-11-18T06:30:54.795649+00:00",
- "hasta_utc": "2026-11-18T10:30:54.795649+00:00",
- "post": "2026-11-17_latam_traduccion_audifonos",
- "error": "POST 17841469235464718/media_publish: 403 {\"error\":{\"message\":\"Application request limit reached\",\"code\":4,\"type\":\"OAuthException\",\"error_subcode\":2207051,\"is_transient\":false,\"error_user_msg\":\"Restringimos algunas actividades para proteger a nuestra comunidad. Av\u00edsanos si crees que hemos cometido un error.\",\"error_user_title\":\"se ha bloqueado la acci\u00f3n\",\"fbtrace_id\":\"AtkXvoALVqCzSKeCU9-f1Sw\"}}"
+ "desde_utc": "2026-11-18T20:33:56.726581+00:00",
+ "hasta_utc": "2026-11-19T00:33:56.726581+00:00",
+ "post": "2026-11-18_es_bitcoin_ipo_anthropic",
+ "error": "POST 17841469235464718/media_publish: 403 {\"error\":{\"message\":\"Application request limit reached\",\"code\":4,\"type\":\"OAuthException\",\"error_subcode\":2207051,\"is_transient\":false,\"error_user_msg\":\"Restringimos algunas actividades para proteger a nuestra comunidad. Av\u00edsanos si crees que hemos cometido un error.\",\"error_user_title\":\"se ha bloqueado la acci\u00f3n\",\"fbtrace_id\":\"AHMSjfSLMsUP_azUOn_9OXd\"}}"
 }
