@@ -1,0 +1,18 @@
+Bitcoin y la salida a bolsa de Anthropic: por qué se habla de una caída del 29 % y qué hay de cierto 📉
+
+Los datos (precio diario BTC-USD de Yahoo Finance):
+• Del máximo de 86.972 $ del 5 de octubre al mínimo de 62.018 $ del 15 de noviembre: −28,7 % en seis semanas. • Anthropic, la empresa que desarrolla la IA Claude, empieza a cotizar en el Nasdaq el jueves 19 de noviembre con el símbolo ANT. Su folleto preveía vender 825 millones de acciones a entre 70 y 78 $: hasta 64.400 millones de dólares, la segunda mayor salida a bolsa de la historia (Reuters).
+• La mayor fue la de SpaceX: 75.000 millones de dólares, empezó a cotizar el 12 de junio (Reuters). En las semanas previas, el bitcoin pasó de 82.792 $ (6 de mayo) a 59.109 $ (5 de junio): −28,6 %. Siguió bajando hasta 57.748 $ el 1 de julio y después se recuperó: del cierre del día de la salida a bolsa al día 100, +28 %.
+
+La teoría (lo que dicen analistas como Matt Cole, de Strive, o Seamus Rocca, de Xapo Bank): algunos inversores venden activos líquidos como el bitcoin para conseguir dinero y pedir acciones en estas salidas a bolsa gigantes. Según Bloomberg, la demanda de acciones de Anthropic multiplicaba por seis las disponibles.
+
+La letra pequeña: que dos cosas coincidan no prueba que una cause la otra. Otros analistas lo atribuyen a la salida de dinero de los fondos cotizados (ETF) de bitcoin, a la liquidación de apuestas apalancadas (1.470 millones de dólares en 24 horas en el mercado cripto, según CoinGlass) y a la caída de las acciones de IA. Y dos casos no son una regla: nada garantiza que el rebote de junio se repita.
+
+⚠️ Esto es divulgación, no un consejo de inversión. No compres ni vendas nada por este post.
+
+¿Crees que es casualidad o algo más?
+
+Fuentes: Yahoo Finance (BTC-USD, datos diarios) · Reuters (11-jun-2026 y 12-nov-2026) · Investing.com (14-nov-2026) · Benzinga (17-nov-2026).
+Fotos: Gage Skidmore (CC BY-SA 3.0), Nielsoncaetanosalmeron (CC BY 4.0), vía Wikimedia Commons; NASA/Joel Kowsky (dominio público).
+
+#bitcoin #criptomonedas #anthropic #spacex #elcafedeschrodinger
