@@ -1,6 +1,6 @@
 {
- "desde_utc": "2026-11-17T18:31:40.532677+00:00",
- "hasta_utc": "2026-11-17T22:31:40.532677+00:00",
- "post": "2026-11-16_es_leonidas",
- "error": "POST 17841469235464718/media_publish: 403 {\"error\":{\"message\":\"Application request limit reached\",\"code\":4,\"type\":\"OAuthException\",\"error_subcode\":2207051,\"is_transient\":false,\"error_user_msg\":\"Restringimos algunas actividades para proteger a nuestra comunidad. Av\u00edsanos si crees que hemos cometido un error.\",\"error_user_title\":\"se ha bloqueado la acci\u00f3n\",\"fbtrace_id\":\"AovMdC-T0PKVFOXVSdKvA7I\"}}"
+ "desde_utc": "2026-11-18T02:27:55.565242+00:00",
+ "hasta_utc": "2026-11-18T06:27:55.565242+00:00",
+ "post": "2026-11-17_latam_traduccion_audifonos",
+ "error": "POST 17841469235464718/media_publish: 403 {\"error\":{\"message\":\"Application request limit reached\",\"code\":4,\"type\":\"OAuthException\",\"error_subcode\":2207051,\"is_transient\":false,\"error_user_msg\":\"Restringimos algunas actividades para proteger a nuestra comunidad. Av\u00edsanos si crees que hemos cometido un error.\",\"error_user_title\":\"se ha bloqueado la acci\u00f3n\",\"fbtrace_id\":\"A-DxwmyHPoMgyLgpGDicb0G\"}}"
 }
