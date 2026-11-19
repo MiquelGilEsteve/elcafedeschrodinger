@@ -1,0 +1,19 @@
+Renuncia en Anthropic y advertencias sobre la IA: qué dijeron Jacob Coxon y Evan Hubinger 🤖⚠️
+
+Lo que pasó:
+• 9 de septiembre de 2026: Jacob Coxon, investigador británico de 27 años que pasó tres años entrenando modelos de IA en OpenAI y Anthropic, anunció en X que dejaba Anthropic: «Ninguna de las dos empresas actúa de forma responsable. Corren hacia una superinteligencia que se mejora a sí misma y se juegan nuestras vidas». Superó los 170 millones de visualizaciones en una semana (AI Safety Newsletter).
+• Poco después, Evan Hubinger, responsable de Ciencia del Alineamiento de Anthropic (que la IA haga lo que queremos), escribió: «Jacob tiene razón». Su estimación personal: más de un 10 % de probabilidad de que la IA mate a todos los humanos en la próxima década. Añadió que aún no tienen un plan para alinear una superinteligencia y que no está claro que vayan camino de tenerlo.
+• El folleto de salida a bolsa de Anthropic (octubre) avisa de que su tecnología podría suponer «riesgos catastróficos o existenciales para la humanidad» (Fortune).
+• Esta semana, Coxon anunció que donará sus acciones de OpenAI a la seguridad de la IA: «Hay que pausar o frenar drásticamente la carrera hacia la superinteligencia» (Business Insider). Y hoy, jueves, Anthropic empieza a cotizar en el Nasdaq a 83 $ por acción (Fortune).
+
+La letra pequeña:
+• Hubinger NO dimitió, y su 10 % es una opinión, no un cálculo científico. Ve bajo el riesgo de los modelos actuales; le preocupa una IA que se mejore a sí misma sin control humano.
+• Nadie ha dicho que vaya a pasar seguro. En una encuesta de 2022 (AI Impacts), el investigador típico en IA daba un 5 % a la extinción humana u otro desenlace igual de grave.
+• Hay críticas: Fortune le reprochó a Coxon que no dice qué hacer, y Trump llamó «bulo» a que la IA domine el mundo.
+
+¿Exageración o aviso serio?
+
+Fuentes: posts en X de Coxon y Hubinger (9-sep-2026) · Fortune (9-sep, 26-oct y 18-nov) · AI Safety Newsletter n.º 81 (15-sep) · Business Insider (18-nov).
+Fotos: HaeB (CC BY-SA 4.0) y Nielsoncaetanosalmeron (CC BY 4.0), vía Wikimedia Commons.
+
+#inteligenciaartificial #anthropic #openai #seguridadIA #elcafedeschrodinger

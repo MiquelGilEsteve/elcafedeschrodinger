@@ -1,0 +1,17 @@
+Mecanismo de Anticitera: la computadora analógica más antigua conocida, con engranajes de bronce de hace más de 2.000 años ⚙️🌒
+
+Qué es: un aparato griego de engranajes construido hacia finales del siglo II a. C. Apareció en 1901 entre los restos de un naufragio romano junto a la isla griega de Anticitera y hoy está en el Museo Arqueológico Nacional de Atenas.
+
+Los datos:
+• Quedan 82 fragmentos, apenas un tercio del original, con 30 engranajes de bronce corroídos (Freeth et al., Scientific Reports, 2021, University College London).
+• Se movía con una manivela. Según sus inscripciones, sus esferas mostraban el Sol, la Luna y los cinco planetas conocidos en la Antigüedad, y predecía eclipses de Sol y de Luna con ciclos de la astronomía babilónica.
+• La revista Nature (2006) lo describió como el ordenador analógico más antiguo conocido: técnicamente, más complejo que cualquier aparato conocido de al menos los mil años siguientes.
+
+El giro latinoamericano: Esteban Guillermo Szigety y Gustavo Francisco Arenas, físicos de la Universidad Nacional de Mar del Plata (Argentina), simularon sus engranajes de dientes triangulares (arXiv, 2025). La forma de los dientes casi no causa errores, pero con las imprecisiones de fabricación que otros investigadores midieron, el mecanismo se habría atascado o desengranado. Su conclusión: o nunca funcionó, o sus errores reales eran menores que los medidos. Ellos mismos piden cautela y ven poco probable que alguien construyera algo tan complejo que no funcionara.
+
+¿Te imaginas cómo lo usaban? ¿Qué te parece más sorprendente?
+
+Fuentes: Freeth et al., Nature 444 (2006); Freeth et al., Scientific Reports 11 (2021); Szigety y Arenas, arXiv:2504.00327 (2025).
+Fotos: Zde (CC BY-SA 4.0), Marsyas (CC BY 2.5), Denexeitelos (CC BY 4.0) y Mike Peel (CC BY-SA 4.0), vía Wikimedia Commons. La 3.ª y la 5.ª foto son réplicas, no el original.
+
+#anticitera #historia #arqueologia #astronomia #elcafedeschrodinger
