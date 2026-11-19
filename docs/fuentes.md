@@ -72,3 +72,8 @@ Si se quiere más contenido latinoamericano, se pueden probar (no comprobadas a�
 - **Precios de bitcoin, acciones e índices:** proveedor Alexandria `finance-yahoo-com`, capacidad `equities/history` (símbolo `BTC-USD`, `interval: "1d"`, `start`/`end`): da máximos, mínimos y cierres diarios para comprobar porcentajes. La respuesta es grande: leerla con `jq`/Python desde el archivo que guarda la herramienta. Las webs cripto (Yahoo/BeInCrypto, Benzinga, Crowdfund Insider) dan porcentajes distintos según el día de referencia: calcularlos con los datos diarios y citar las fechas.
 - Finanzas: las noticias de Reuters (reuters.com) salen con su extracto en `firecrawl_search`; CNBC y Quartz también. Para física «de manual», NASA Space Place, NASA Sun Facts (science.nasa.gov/sun/facts/), la NASA Earth Fact Sheet (nssdc.gsfc.nasa.gov) y el comunicado de LIGO (ligo.caltech.edu) se leen con Firecrawl (`formats: ["query"]`, `mode: "directQuote"`). Live Science no se lee con Firecrawl (muro de suscripción).
 
+## 10. Notas 2026-11-19
+- **Posts de X:** `firecrawl_scrape` de una URL x.com/<usuario>/status/<id> devuelve el texto exacto, la fecha (UTC) y los «me gusta» (proveedor `x-com`, 5 créditos). Fuente primaria para citas.
+- Fortune (fortune.com) se lee con Firecrawl (artículo completo); Business Insider sale con su texto en `firecrawl_search`. newsletter.safe.ai (AI Safety Newsletter del CAIS) también se lee y enlaza las fuentes primarias.
+- Commons: la categoría buena es `Category:Antikythera_Mechanism` (con M mayúscula; la minúscula da 404). Ojo con mayúsculas en nombres de categorías.
+
