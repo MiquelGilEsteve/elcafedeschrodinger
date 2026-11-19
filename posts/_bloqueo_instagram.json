@@ -1,6 +1,6 @@
 {
- "desde_utc": "2026-11-19T01:44:01.322607+00:00",
- "hasta_utc": "2026-11-19T05:44:01.322607+00:00",
- "post": "2026-11-18_es_bitcoin_ipo_anthropic",
- "error": "POST 17841469235464718/media_publish: 403 {\"error\":{\"message\":\"Application request limit reached\",\"code\":4,\"type\":\"OAuthException\",\"error_subcode\":2207051,\"is_transient\":false,\"error_user_msg\":\"Restringimos algunas actividades para proteger a nuestra comunidad. Av\u00edsanos si crees que hemos cometido un error.\",\"error_user_title\":\"se ha bloqueado la acci\u00f3n\",\"fbtrace_id\":\"Abat2smTQqP21G05rehAEr9\"}}"
+ "desde_utc": "2026-11-19T06:37:01.373840+00:00",
+ "hasta_utc": "2026-11-19T10:37:01.373840+00:00",
+ "post": "2026-11-18_latam_sol_se_apaga",
+ "error": "POST 17841469235464718/media_publish: 403 {\"error\":{\"message\":\"Application request limit reached\",\"code\":4,\"type\":\"OAuthException\",\"error_subcode\":2207051,\"is_transient\":false,\"error_user_msg\":\"Restringimos algunas actividades para proteger a nuestra comunidad. Av\u00edsanos si crees que hemos cometido un error.\",\"error_user_title\":\"se ha bloqueado la acci\u00f3n\",\"fbtrace_id\":\"Avui9iPQaaXxsJbsCn8QMFC\"}}"
 }
