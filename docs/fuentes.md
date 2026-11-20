@@ -82,3 +82,4 @@ Si se quiere más contenido latinoamericano, se pueden probar (no comprobadas a�
 - Las revistas de la ESA (esajournals.onlinelibrary.wiley.com) solo dejan ver la cabecera y las referencias: las cifras, de la nota de prensa de la institución.
 - Para el post de las pirámides se leyeron con Firecrawl nature.com (Commun. Earth Environ.), news.liverpool.ac.uk y britannica.com (`formats: ["query"]`, `mode: "directQuote"`).
 
+- **429 de Wikimedia (2026-11-20):** en GitHub, upload.wikimedia.org dio 429 a partir de la 4.ª foto de un mismo post, también tras esperar 12 min. Desde hoy `preparar.py` reintenta hasta 3 veces con pausa (Retry-After, máx. 90 s) y así salieron todas.
