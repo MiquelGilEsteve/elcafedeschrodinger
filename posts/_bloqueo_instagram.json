@@ -1,6 +1,6 @@
 {
- "desde_utc": "2026-11-20T14:06:01.999198+00:00",
- "hasta_utc": "2026-11-20T18:06:01.999198+00:00",
+ "desde_utc": "2026-11-20T18:45:36.280382+00:00",
+ "hasta_utc": "2026-11-20T22:45:36.280382+00:00",
  "post": "2026-11-20_es_piramides",
- "error": "POST 17841469235464718/media_publish: 403 {\"error\":{\"message\":\"Application request limit reached\",\"code\":4,\"type\":\"OAuthException\",\"error_subcode\":2207051,\"is_transient\":false,\"error_user_msg\":\"Restringimos algunas actividades para proteger a nuestra comunidad. Av\u00edsanos si crees que hemos cometido un error.\",\"error_user_title\":\"se ha bloqueado la acci\u00f3n\",\"fbtrace_id\":\"AKWqdde2EASNu8AUP3a8xQZ\"}}"
+ "error": "POST 17841469235464718/media_publish: 403 {\"error\":{\"message\":\"Application request limit reached\",\"code\":4,\"type\":\"OAuthException\",\"error_subcode\":2207051,\"is_transient\":false,\"error_user_msg\":\"Restringimos algunas actividades para proteger a nuestra comunidad. Av\u00edsanos si crees que hemos cometido un error.\",\"error_user_title\":\"se ha bloqueado la acci\u00f3n\",\"fbtrace_id\":\"A_gPddBjQCV5Clj4D8DTsXy\"}}"
 }
