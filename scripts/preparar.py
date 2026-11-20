@@ -8,7 +8,7 @@ Para cada carpeta posts/<id>/ con post.json y sin img/01.jpg:
   4. Comprueba límites de Instagram (máx. 10 diapositivas, pie ≤ 2200 caracteres, ≤ 30 hashtags).
 Uso: python scripts/preparar.py
 """
-import asyncio, json, pathlib, re, shutil, subprocess, sys, tempfile
+import asyncio, json, pathlib, re, shutil, subprocess, sys, tempfile, time
 import requests
 from PIL import Image
 
@@ -21,7 +21,17 @@ SEG_REEL, FUNDIDO = 4.5, 0.5  # segundos por frase y duración del fundido (5 fr
 UA = {"User-Agent": "elcafedeschrodinger-bot/1.0 (publicador de Instagram)"}
 
 def descargar(url, destino):
-    r = requests.get(url, headers=UA, timeout=60)
+    # Wikimedia devuelve «429 Too Many Requests» tras unas pocas descargas seguidas: esperar y reintentar.
+    for intento in range(4):
+        r = requests.get(url, headers=UA, timeout=60)
+        if r.status_code != 429 or intento == 3:
+            break
+        try:
+            espera = min(int(r.headers.get("retry-after", "")), 90)
+        except ValueError:
+            espera = 20 * (intento + 1)
+        print(f"   429 en {url[:80]}…; reintento en {espera} s")
+        time.sleep(max(espera, 5))
     r.raise_for_status()
     if not r.headers.get("content-type", "").startswith("image/"):
         raise ValueError(f"no es una imagen ({r.headers.get('content-type')})")
