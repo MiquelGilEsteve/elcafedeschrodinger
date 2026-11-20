@@ -77,3 +77,8 @@ Si se quiere más contenido latinoamericano, se pueden probar (no comprobadas a�
 - Fortune (fortune.com) se lee con Firecrawl (artículo completo); Business Insider sale con su texto en `firecrawl_search`. newsletter.safe.ai (AI Safety Newsletter del CAIS) también se lee y enlaza las fuentes primarias.
 - Commons: la categoría buena es `Category:Antikythera_Mechanism` (con M mayúscula; la minúscula da 404). Ojo con mayúsculas en nombres de categorías.
 
+## 11. Notas 2026-11-20
+- **Ciencia latinoamericana:** `firecrawl_search` con `sources: ["news"]`, `tbs: "qdr:w"` y la consulta «científicos descubren estudio México OR Chile OR Argentina OR Colombia OR Perú» dio buenos temas (así salió el plecóptero de Navarino). **capehorncenter.com** (Centro Internacional Cabo de Hornos) e **institutobase.cl** (Instituto Milenio BASE) publican notas oficiales con cifras y se leen con Firecrawl. **noticiasambientales.com** (Argentina) es un buen índice con fecha.
+- Las revistas de la ESA (esajournals.onlinelibrary.wiley.com) solo dejan ver la cabecera y las referencias: las cifras, de la nota de prensa de la institución.
+- Para el post de las pirámides se leyeron con Firecrawl nature.com (Commun. Earth Environ.), news.liverpool.ac.uk y britannica.com (`formats: ["query"]`, `mode: "directQuote"`).
+
