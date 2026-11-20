@@ -1,6 +1,6 @@
 {
- "desde_utc": "2026-11-19T23:55:02.404603+00:00",
- "hasta_utc": "2026-11-20T03:55:02.404603+00:00",
- "post": "2026-11-19_es_renuncia_anthropic",
- "error": "POST 17841469235464718/media_publish: 403 {\"error\":{\"message\":\"Application request limit reached\",\"code\":4,\"type\":\"OAuthException\",\"error_subcode\":2207051,\"is_transient\":false,\"error_user_msg\":\"Restringimos algunas actividades para proteger a nuestra comunidad. Av\u00edsanos si crees que hemos cometido un error.\",\"error_user_title\":\"se ha bloqueado la acci\u00f3n\",\"fbtrace_id\":\"A9Q4eAEh7R36zchdZ0YrBcI\"}}"
+ "desde_utc": "2026-11-20T04:39:33.291038+00:00",
+ "hasta_utc": "2026-11-20T08:39:33.291038+00:00",
+ "post": "2026-11-19_latam_anticitera",
+ "error": "POST 17841469235464718/media_publish: 403 {\"error\":{\"message\":\"Application request limit reached\",\"code\":4,\"type\":\"OAuthException\",\"error_subcode\":2207051,\"is_transient\":false,\"error_user_msg\":\"Restringimos algunas actividades para proteger a nuestra comunidad. Av\u00edsanos si crees que hemos cometido un error.\",\"error_user_title\":\"se ha bloqueado la acci\u00f3n\",\"fbtrace_id\":\"AX1MKNR1q0F6wnm2LBSz5qd\"}}"
 }
