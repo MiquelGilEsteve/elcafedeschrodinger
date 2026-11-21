@@ -83,3 +83,8 @@ Si se quiere más contenido latinoamericano, se pueden probar (no comprobadas a�
 - Para el post de las pirámides se leyeron con Firecrawl nature.com (Commun. Earth Environ.), news.liverpool.ac.uk y britannica.com (`formats: ["query"]`, `mode: "directQuote"`).
 
 - **429 de Wikimedia (2026-11-20):** en GitHub, upload.wikimedia.org dio 429 a partir de la 4.ª foto de un mismo post, también tras esperar 12 min. Desde hoy `preparar.py` reintenta hasta 3 veces con pausa (Retry-After, máx. 90 s) y así salieron todas.
+
+## 12. Notas 2026-11-21
+- **journals.aps.org** (Physical Review Letters) se lee entero con Firecrawl si el artículo es de acceso abierto (texto, fecha y licencia CC BY 4.0). Las notas de prensa de la Universidad de Innsbruck (uibk.ac.at/en/newsroom) también.
+- **esa.int**: la ficha de cada misión (p. ej. /articles/about-us/directorates/science/bepicolombo/bepicolombo-factsheet) y las páginas «Latest updates» se leen con Firecrawl. Commons tiene casi todas las imágenes de la ESA (CC BY-SA 3.0 IGO): `Category:Photos_of_Mercury_by_BepiColombo`.
+- **agenciadenoticias.unal.edu.co** (Universidad Nacional de Colombia) se lee con Firecrawl: buena fuente de ciencia colombiana.
