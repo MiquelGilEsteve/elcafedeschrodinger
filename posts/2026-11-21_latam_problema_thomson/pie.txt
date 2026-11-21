@@ -1,0 +1,17 @@
+El problema de Thomson, fotografiado por primera vez: físicos captan con gotas de helio superfluido y oro cómo se ordenan cargas eléctricas sobre una esfera ⚛️🟡
+
+Qué pasó: en 1904, J. J. Thomson se preguntó cómo se colocan sobre una esfera varias cargas iguales que se repelen, buscando la energía más baja. Cada carga extra lo complica muchísimo. Un equipo de la Universidad de Innsbruck (Austria), con las universidades de Leicester, Durham y Cambridge (Reino Unido), consiguió por primera vez fotografiar esas configuraciones.
+
+Los datos:
+• En 1998, el matemático Stephen Smale incluyó el problema de Thomson como el n.º 7 de sus 18 grandes problemas matemáticos para el siglo XXI. Solo hay soluciones exactas para unos pocos casos pequeños.
+• El experimento usa gotitas de helio superfluido, a unas décimas de grado del cero absoluto, cargadas con un haz de electrones. Las cargas se van a la superficie y, al pasar por vapor de oro, cada una queda marcada con una nanopartícula de unos 700 átomos.
+• Al chocar con una rejilla, el helio se evapora y el oro queda como una huella que se mira con un microscopio electrónico.
+• En 25 huellas con 5 a 36 cargas, las posiciones coinciden con las configuraciones de mínima energía calculadas antes por los teóricos.
+• En gotas más grandes (de hasta un micrómetro de radio) aparece una red de hexágonos con defectos de cinco lados: un patrón hexagonal plano no puede cubrir una esfera sin ellos, como pasa con los pentágonos de un balón.
+
+Letra pequeña: el estudio no resuelve el problema matemático en general; compara las huellas con soluciones ya calculadas. En las gotas grandes, el choque deforma parte de la huella. El problema sirve también para entender virus esféricos y fulerenos.
+
+Fuentes: Pohl et al., «Real-Space Imaging of Thomson Charge Configurations in Superfluid Helium Nanodroplets», Physical Review Letters 137, 183001 (26-oct-2026, acceso abierto); nota de la Universidad de Innsbruck (28-oct-2026).
+Fotos (Wikimedia Commons): Alfred Leitner y Bmatulis (dominio público), Pleple2000 (CC BY-SA 3.0; no es el microscopio del estudio).
+
+#fisica #matematicas #ciencia #helio #elcafedeschrodinger
