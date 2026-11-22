@@ -88,3 +88,8 @@ Si se quiere más contenido latinoamericano, se pueden probar (no comprobadas a�
 - **journals.aps.org** (Physical Review Letters) se lee entero con Firecrawl si el artículo es de acceso abierto (texto, fecha y licencia CC BY 4.0). Las notas de prensa de la Universidad de Innsbruck (uibk.ac.at/en/newsroom) también.
 - **esa.int**: la ficha de cada misión (p. ej. /articles/about-us/directorates/science/bepicolombo/bepicolombo-factsheet) y las páginas «Latest updates» se leen con Firecrawl. Commons tiene casi todas las imágenes de la ESA (CC BY-SA 3.0 IGO): `Category:Photos_of_Mercury_by_BepiColombo`.
 - **agenciadenoticias.unal.edu.co** (Universidad Nacional de Colombia) se lee con Firecrawl: buena fuente de ciencia colombiana.
+
+## 13. Notas 2026-11-22
+- **inah.gob.mx/boletines** (boletines del INAH, México) se lee con Firecrawl: texto completo con cifras. Sus fotos son del INAH, sin licencia libre: buscar en Commons (`Category:Museo_del_mamut,_AIFA`).
+- **ieo.csic.es/noticias** (Instituto Español de Oceanografía) se lee con Firecrawl, con la referencia del artículo.
+- **Ver las fotos de Commons desde la sesión:** `firecrawl_scrape` de la página File: o Category: con `formats: ["screenshot"]` da una URL de storage.googleapis.com que **sí se descarga con curl**: así se pueden ver las miniaturas y elegir encuadre. Para listar licencias y autores de toda una categoría: la API `commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&iiprop=url|size|extmetadata&generator=categorymembers&gcmtitle=Category:…&format=json` con Firecrawl (`formats: ["rawHtml"]`).
