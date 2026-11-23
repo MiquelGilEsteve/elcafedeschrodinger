@@ -54,6 +54,26 @@ def esperar(contenedor, intentos=30, pausa=5):
         time.sleep(pausa)
     raise RuntimeError(f"contenedor {contenedor}: no terminó a tiempo")
 
+def primera_linea(texto):
+    return " ".join((texto or "").strip().splitlines()[0].split()).lower() if (texto or "").strip() else ""
+
+def ya_publicado(post):
+    """Busca en las últimas publicaciones de la cuenta un carrusel con la misma primera línea del pie.
+    Instagram a veces publica el post aunque media_publish devuelva error (p. ej. 2207051): sin esta
+    comprobación el post se volvía a publicar en el siguiente intento y salía repetido."""
+    clave = primera_linea(post.get("pie", ""))
+    if not clave or DRY:
+        return None
+    desde = dt.datetime.fromisoformat(post["publicar"]) - dt.timedelta(hours=2)
+    datos = api("GET", f"{USER}/media", fields="id,caption,timestamp,media_type", limit=25).get("data", [])
+    for m in datos:
+        if m.get("media_type") != "CAROUSEL_ALBUM" or primera_linea(m.get("caption", "")) != clave:
+            continue
+        cuando = dt.datetime.strptime(m["timestamp"], "%Y-%m-%dT%H:%M:%S%z")
+        if cuando >= desde:
+            return {"media_id": m["id"], "publicado_utc": cuando.astimezone(dt.timezone.utc).isoformat()}
+    return None
+
 def publicar(carpeta, post):
     imgs = sorted(p for p in (carpeta / "img").glob("[0-9][0-9].jpg"))
     hijos = []
@@ -72,20 +92,20 @@ def publicar(carpeta, post):
     pub = api("POST", f"{USER}/media_publish", creation_id=car)["id"]
     resultado = {"media_id": pub, "publicado_utc": dt.datetime.now(dt.timezone.utc).isoformat()}
     reel = carpeta / "img" / "reel.mp4"
-    if post.get("reel", True) and reel.exists():  # Reel tras el carrusel (por defecto, «Reel de prueba»)
+    if post.get("reel", True) and reel.exists():  # Reel tras el carrusel (Reel normal; los «de prueba» exigen un mínimo de seguidores)
         try:
             datos = {"media_type": "REELS", "video_url": url_publica(reel), "caption": post.get("pie", "")}
             portada = carpeta / "img" / "reel_portada.jpg"
             if portada.exists():
                 datos["cover_url"] = url_publica(portada)
-            if post.get("reel_prueba", True):
+            if post.get("reel_prueba", False):
                 datos["trial_params"] = json.dumps({"graduation_strategy": "SS_PERFORMANCE"})
             else:
                 datos["share_to_feed"] = "true"
             r = api("POST", f"{USER}/media", **datos)["id"]
             esperar(r, intentos=40, pausa=15)  # los vídeos tardan más en procesarse
             resultado["reel_id"] = api("POST", f"{USER}/media_publish", creation_id=r)["id"]
-            resultado["reel_prueba"] = bool(post.get("reel_prueba", True))
+            resultado["reel_prueba"] = bool(post.get("reel_prueba", False))
         except Exception as e:
             resultado["reel_error"] = str(e); print("   AVISO reel:", e)
     story = carpeta / "img" / "story.jpg"
@@ -121,6 +141,14 @@ if __name__ == "__main__":
             continue
         if not DRY and not (TOKEN and USER and REPO):
             fallos += 1; print(f"[{carpeta.name}] ERROR: toca publicarlo, pero faltan los secretos IG_ACCESS_TOKEN / IG_USER_ID."); continue
+        try:  # ¿ya está en Instagram? (evita publicarlo dos veces)
+            previo = ya_publicado(post)
+        except Exception as e:
+            previo = None; print(f"[{carpeta.name}] AVISO: no se pudo comprobar si ya estaba publicado: {e}")
+        if previo:
+            previo["nota"] = "ya estaba publicado en Instagram (detectado antes de publicar); no se repite"
+            (carpeta / "publicado.json").write_text(json.dumps(previo, indent=1), encoding="utf-8")
+            print(f"[{carpeta.name}] ya estaba publicado: {previo}"); continue
         print(f"[{carpeta.name}] publicando ({post.get('audiencia', '')})…")
         try:
             res = publicar(carpeta, post)
@@ -128,6 +156,16 @@ if __name__ == "__main__":
                 (carpeta / "publicado.json").write_text(json.dumps(res, indent=1), encoding="utf-8")
             print(f"[{carpeta.name}] OK {res}")
         except Exception as e:
+            if "media_publish" in str(e) and not DRY:  # Instagram puede haberlo publicado pese al error
+                time.sleep(30)
+                try:
+                    previo = ya_publicado(post)
+                except Exception:
+                    previo = None
+                if previo:
+                    previo["nota"] = f"Instagram devolvió error pero el post se publicó: {str(e)[:300]}"
+                    (carpeta / "publicado.json").write_text(json.dumps(previo, indent=1), encoding="utf-8")
+                    print(f"[{carpeta.name}] publicado pese al error de Instagram: {previo}"); continue
             fallos += 1; print(f"[{carpeta.name}] ERROR: {e}")
             if "2207051" in str(e) and not DRY:
                 hasta = ahora + dt.timedelta(hours=PAUSA_BLOQUEO_H)
