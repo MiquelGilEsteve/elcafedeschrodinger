@@ -93,3 +93,8 @@ Si se quiere más contenido latinoamericano, se pueden probar (no comprobadas a�
 - **inah.gob.mx/boletines** (boletines del INAH, México) se lee con Firecrawl: texto completo con cifras. Sus fotos son del INAH, sin licencia libre: buscar en Commons (`Category:Museo_del_mamut,_AIFA`).
 - **ieo.csic.es/noticias** (Instituto Español de Oceanografía) se lee con Firecrawl, con la referencia del artículo.
 - **Ver las fotos de Commons desde la sesión:** `firecrawl_scrape` de la página File: o Category: con `formats: ["screenshot"]` da una URL de storage.googleapis.com que **sí se descarga con curl**: así se pueden ver las miniaturas y elegir encuadre. Para listar licencias y autores de toda una categoría: la API `commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&iiprop=url|size|extmetadata&generator=categorymembers&gcmtitle=Category:…&format=json` con Firecrawl (`formats: ["rawHtml"]`).
+
+## 14. Notas 2026-11-23
+- **iopscience.iop.org** (The Planetary Science Journal, ApJ…) se lee con Firecrawl (`formats: ["query"]`, `mode: "directQuote"`): resumen, cifras, fecha y licencia (CC BY 4.0).
+- **csic.es/es/actualidad-del-csic/…** se lee entero con Firecrawl (markdown): nota oficial con cifras y DOI. Las fichas de nature.com de Nature Communications solo dieron el resumen.
+- **API de búsqueda de Commons** con Firecrawl (`formats: ["rawHtml"]`): `commons.wikimedia.org/w/api.php?action=query&generator=search&gsrnamespace=6&gsrsearch=<términos>&prop=imageinfo&iiprop=url|size|extmetadata&iiextmetadatafilter=LicenseShortName|Artist|ImageDescription&format=json` da en una llamada archivos, licencia y autor.
