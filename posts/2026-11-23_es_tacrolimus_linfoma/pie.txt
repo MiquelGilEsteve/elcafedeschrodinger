@@ -1,0 +1,19 @@
+Tacrolimus contra el linfoma de células T: un fármaco de trasplantes frena el tumor en ratones (CIC de Salamanca, CSIC) 🧪🐭
+
+Qué pasó: un equipo del Centro de Investigación del Cáncer de Salamanca (CSIC, Universidad de Salamanca, FICUS), dirigido por Xosé R. Bustelo, ha publicado en Nature Communications por qué el gen RHOA impulsa algunos linfomas de células T periféricos, y cómo frenarlos en ratones con un medicamento que ya existe.
+
+Los datos:
+• Estos linfomas nacen de linfocitos T, células del sistema inmunitario, y tienen mal pronóstico y pocas opciones de tratamiento.
+• En los linfomas nodales de células T foliculares, alrededor del 70 % de los casos tiene mutaciones en RHOA.
+• La paradoja: unas mutaciones activan RHOA y otras la bloquean. Las dos le dan una función nueva que activa NFAT, una proteína que enciende genes y favorece el tumor.
+• El tacrolimus, un inmunosupresor que se usa para evitar el rechazo de órganos trasplantados, bloquea un paso necesario para activar NFAT.
+• En ratones, redujo las células tumorales en 6 de los 7 animales tratados con una cuarta parte de la dosis inmunosupresora de referencia, sin signos de inmunosupresión en lo que se midió. También frenó células de un paciente trasplantadas a ratones.
+
+Letra pequeña: son resultados preclínicos. El fármaco no se ha dado a pacientes en este estudio y harán falta más investigaciones para saber si funciona y es seguro en personas. Esto no es un consejo médico: ningún tratamiento debe cambiarse sin hablar con el equipo médico.
+
+¿Qué otros fármacos antiguos crees que podrían tener una segunda vida?
+
+Fuentes: Fernández-Nevado, Robles-Valero et al., «Functionally divergent RHOA mutations drive peripheral T cell lymphoma development by engaging a common neomorphic pathway», Nature Communications (11-nov-2026), doi.org/10.1038/s41467-026-79260-8 · Nota de prensa del CSIC (16-nov-2026).
+Foto: ratón de laboratorio (no es del estudio), Rama, CC BY-SA 2.0 FR, Wikimedia Commons.
+
+#linfoma #cancer #csic #salamanca #elcafedeschrodinger
