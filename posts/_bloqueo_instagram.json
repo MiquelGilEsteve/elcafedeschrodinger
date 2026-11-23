@@ -1,6 +1,6 @@
 {
- "desde_utc": "2026-11-22T23:24:50.504685+00:00",
- "hasta_utc": "2026-11-23T03:24:50.504685+00:00",
- "post": "2026-11-22_es_coral_tenerife",
- "error": "POST 17841469235464718/media_publish: 403 {\"error\":{\"message\":\"Application request limit reached\",\"code\":4,\"type\":\"OAuthException\",\"error_subcode\":2207051,\"is_transient\":false,\"error_user_msg\":\"Restringimos algunas actividades para proteger a nuestra comunidad. Av\u00edsanos si crees que hemos cometido un error.\",\"error_user_title\":\"se ha bloqueado la acci\u00f3n\",\"fbtrace_id\":\"AT41SsTryY2yf-Duve1u6MF\"}}"
+ "desde_utc": "2026-11-23T03:37:25.962495+00:00",
+ "hasta_utc": "2026-11-23T07:37:25.962495+00:00",
+ "post": "2026-11-22_latam_yotzin_aifa",
+ "error": "POST 17841469235464718/media_publish: 403 {\"error\":{\"message\":\"Application request limit reached\",\"code\":4,\"type\":\"OAuthException\",\"error_subcode\":2207051,\"is_transient\":false,\"error_user_msg\":\"Restringimos algunas actividades para proteger a nuestra comunidad. Av\u00edsanos si crees que hemos cometido un error.\",\"error_user_title\":\"se ha bloqueado la acci\u00f3n\",\"fbtrace_id\":\"AL5yjCzNNGsL6FwoU6VNdiE\"}}"
 }
