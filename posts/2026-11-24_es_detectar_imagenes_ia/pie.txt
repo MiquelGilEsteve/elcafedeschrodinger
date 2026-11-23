@@ -1,0 +1,23 @@
+Cómo saber si una imagen está hecha con IA: SynthID, la marca de agua invisible de Google y OpenAI, y el caso del bus de la EMT en la huelga del 11-N 🔍
+
+Qué pasó: el 11 de noviembre circuló en X una foto de un autobús de la EMT de Madrid con los cristales rotos, atribuida a piquetes de la huelga. Maldita.es la analizó con SynthID Detector y encontró la marca de agua de SynthID: la imagen estaba generada o editada con IA, en este caso con un modelo de OpenAI. Las letras ilegibles del autobús eran otra pista.
+
+Qué es SynthID:
+• Una marca de agua invisible que Google DeepMind mete en los píxeles de lo que crean sus modelos de IA. No se ve, pero un detector la lee.
+• Desde el 19 de mayo de 2026, OpenAI también la añade a las imágenes de ChatGPT, Codex y su API, junto con los metadatos C2PA (las «credenciales de contenido»).
+
+Cómo comprobar una imagen:
+• App o web de Gemini: sube la imagen y pregunta «¿Está generada con IA?». Busca la marca SynthID de Google.
+• openai.com/verify: la herramienta pública (aún en pruebas) de OpenAI para saber si una imagen salió de sus herramientas.
+• Si haces captura de pantalla, recorta justo la imagen.
+• Fíjate en los textos (carteles, matrículas, rótulos): la IA aún los deforma a menudo.
+• Busca la imagen en Google Lens y contrasta con medios fiables antes de compartirla.
+
+Letra pequeña: que no aparezca la marca no demuestra que la foto sea real. Otras IA no la usan, y un recorte fuerte, la compresión o las ediciones pueden borrarla.
+
+¿Te ha llegado alguna foto así que luego resultó falsa?
+
+Fuentes: Maldita.es, «No, esta imagen de un autobús con los cristales destruidos…» (11-nov-2026) · OpenAI, «Impulsar la procedencia del contenido…» (19-may-2026) y centro de ayuda «C2PA y SynthID en imágenes generadas por OpenAI» · Ayuda de Gemini, «Verificar imágenes, vídeos y audio generados con IA».
+Foto: autobús de la EMT de Madrid (no es la imagen falsa), Antonio Vera, CC BY-SA 2.0, Wikimedia Commons.
+
+#inteligenciaartificial #bulos #synthid #verificacion #elcafedeschrodinger
