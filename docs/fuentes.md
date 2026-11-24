@@ -98,3 +98,8 @@ Si se quiere más contenido latinoamericano, se pueden probar (no comprobadas a�
 - **iopscience.iop.org** (The Planetary Science Journal, ApJ…) se lee con Firecrawl (`formats: ["query"]`, `mode: "directQuote"`): resumen, cifras, fecha y licencia (CC BY 4.0).
 - **csic.es/es/actualidad-del-csic/…** se lee entero con Firecrawl (markdown): nota oficial con cifras y DOI. Las fichas de nature.com de Nature Communications solo dieron el resumen.
 - **API de búsqueda de Commons** con Firecrawl (`formats: ["rawHtml"]`): `commons.wikimedia.org/w/api.php?action=query&generator=search&gsrnamespace=6&gsrsearch=<términos>&prop=imageinfo&iiprop=url|size|extmetadata&iiextmetadatafilter=LicenseShortName|Artist|ImageDescription&format=json` da en una llamada archivos, licencia y autor.
+
+
+## 15. Notas 2026-11-24
+- **Sismos de Perú:** portal.indeci.gob.pe (páginas /emergencias/… y los PDF de reportes complementarios, con `parsers: ["pdf"]` y `pdfOptions.maxPages: 6` para no gastar créditos: la tabla de daños está en las primeras páginas) y repositorio.igp.gob.pe (informes técnicos del IGP) se leen con Firecrawl. gob.pe/institucion/igp/noticias también.
+- **USGS:** proveedor Alexandria `earthquake-usgs-gov`, capacidad `earthquakes/search` (opciones `start_time`, `end_time`, `min_latitude`… `min_magnitude`): magnitud mww, profundidad y hora UTC para contrastar con la agencia nacional.
