@@ -103,3 +103,8 @@ Si se quiere más contenido latinoamericano, se pueden probar (no comprobadas a�
 ## 15. Notas 2026-11-24
 - **Sismos de Perú:** portal.indeci.gob.pe (páginas /emergencias/… y los PDF de reportes complementarios, con `parsers: ["pdf"]` y `pdfOptions.maxPages: 6` para no gastar créditos: la tabla de daños está en las primeras páginas) y repositorio.igp.gob.pe (informes técnicos del IGP) se leen con Firecrawl. gob.pe/institucion/igp/noticias también.
 - **USGS:** proveedor Alexandria `earthquake-usgs-gov`, capacidad `earthquakes/search` (opciones `start_time`, `end_time`, `min_latitude`… `min_magnitude`): magnitud mww, profundidad y hora UTC para contrastar con la agencia nacional.
+
+## 16. Notas 2026-11-25
+- **almaobservatory.org/es/comunicados-de-prensa/…** (Observatorio ALMA, Chile) se lee con Firecrawl: notas en español con cifras y enlace al artículo. Science Advances (science.org/doi/10.1126/sciadv.…) se lee entero con Firecrawl (`formats: ["query"]`).
+- **sciencedirect.com** (Journal of Archaeological Science, open access) se lee con Firecrawl en modo `query` + `directQuote` (resumen, highlights y resultados con cifras). El modo `query` libre llegó a inventar un highlight: comprobar con `directQuote`.
+- En el texto de las diapositivas, el asterisco es marcado de resaltado: «M87*» rompe el resaltado.
