@@ -1,5 +1,7 @@
 {
  "media_id": "18018953498755858",
  "publicado_utc": "2026-11-25T20:21:37+00:00",
- "nota": "Instagram devolvi\u00f3 error pero el post se public\u00f3: POST 17841469235464718/media_publish: 403 {\"error\":{\"message\":\"Application request limit reached\",\"code\":4,\"type\":\"OAuthException\",\"error_subcode\":2207051,\"is_transient\":false,\"error_user_msg\":\"Restringimos algunas actividades para proteger a nuestra comunidad. Av\u00edsanos si crees que hemos cometido u"
+ "nota": "Instagram devolvi\u00f3 error pero el post se public\u00f3: POST 17841469235464718/media_publish: 403 {\"error\":{\"message\":\"Application request limit reached\",\"code\":4,\"type\":\"OAuthException\",\"error_subcode\":2207051,\"is_transient\":false,\"error_user_msg\":\"Restringimos algunas actividades para proteger a nuestra comunidad. Av\u00edsanos si crees que hemos cometido u",
+ "reel_id": "18119897597606913",
+ "reel_prueba": false
 }
