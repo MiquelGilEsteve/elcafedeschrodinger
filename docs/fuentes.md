@@ -108,3 +108,8 @@ Si se quiere más contenido latinoamericano, se pueden probar (no comprobadas a�
 - **almaobservatory.org/es/comunicados-de-prensa/…** (Observatorio ALMA, Chile) se lee con Firecrawl: notas en español con cifras y enlace al artículo. Science Advances (science.org/doi/10.1126/sciadv.…) se lee entero con Firecrawl (`formats: ["query"]`).
 - **sciencedirect.com** (Journal of Archaeological Science, open access) se lee con Firecrawl en modo `query` + `directQuote` (resumen, highlights y resultados con cifras). El modo `query` libre llegó a inventar un highlight: comprobar con `directQuote`.
 - En el texto de las diapositivas, el asterisco es marcado de resaltado: «M87*» rompe el resaltado.
+
+## 17. Notas 2026-11-26
+- **pnas.org** se lee con Firecrawl (`formats: ["query"]`, `mode: "directQuote"`): resumen, cifras del texto y fechas (en línea / número). Antes figuraba como «PNAS no se lee».
+- **parquesnacionales.gov.co/sala-prensa/noticias/…** (Parques Nacionales Naturales de Colombia) se lee con Firecrawl: notas oficiales con cifras. **novataxa.blogspot.com** da el resumen y el DOI de especies nuevas (Zootaxa), pero la página es enorme: extraer con Python del archivo guardado.
+- Búsqueda en Commons: añadir `filetype:bitmap` a `gsrsearch` evita cientos de PDF escaneados; `Category:Wildfires_in_Spain` tiene pocas fotos útiles. Mirar siempre la miniatura: «Fuegos entre arboles.jpg» son fuegos artificiales.
