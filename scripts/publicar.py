@@ -14,6 +14,7 @@ import requests
 
 RAIZ = pathlib.Path(__file__).resolve().parents[1]
 MAX_RETRASO_H = 6
+REEL_PENDIENTE_H = 24  # Reels que faltan en posts publicados hace menos de esto se suben (uno por pasada)
 # Si Instagram bloquea la acción (código 4 / subcódigo 2207051, «se ha bloqueado la acción»), insistir cada 15 min
 # puede alargar el bloqueo: se apunta en posts/_bloqueo_instagram.json y no se reintenta hasta pasadas PAUSA_BLOQUEO_H horas.
 PAUSA_BLOQUEO_H = 4
@@ -74,6 +75,19 @@ def ya_publicado(post):
             return {"media_id": m["id"], "publicado_utc": cuando.astimezone(dt.timezone.utc).isoformat()}
     return None
 
+def reel_publicado(post):
+    """ID de un Reel ya publicado con la misma primera línea del pie (o None)."""
+    clave = primera_linea(post.get("pie", ""))
+    if not clave or DRY:
+        return None
+    desde = dt.datetime.fromisoformat(post["publicar"]) - dt.timedelta(hours=2)
+    for m in api("GET", f"{USER}/media", fields="id,caption,timestamp,media_type,media_product_type", limit=25).get("data", []):
+        es_reel = m.get("media_product_type") == "REELS" or m.get("media_type") == "VIDEO"
+        if es_reel and primera_linea(m.get("caption", "")) == clave and \
+           dt.datetime.strptime(m["timestamp"], "%Y-%m-%dT%H:%M:%S%z") >= desde:
+            return m["id"]
+    return None
+
 def publicar(carpeta, post):
     imgs = sorted(p for p in (carpeta / "img").glob("[0-9][0-9].jpg"))
     hijos = []
@@ -91,9 +105,15 @@ def publicar(carpeta, post):
         raise RuntimeError(f"carrusel (pie/hijos): {e}") from None
     pub = api("POST", f"{USER}/media_publish", creation_id=car)["id"]
     resultado = {"media_id": pub, "publicado_utc": dt.datetime.now(dt.timezone.utc).isoformat()}
+    return extras(carpeta, post, resultado)
+
+def extras(carpeta, post, resultado):
+    """Reel y story tras el carrusel. Se llama también cuando Instagram devolvió error en el carrusel
+    pero lo publicó (2207051): antes, en ese caso, el Reel no se subía nunca."""
     reel = carpeta / "img" / "reel.mp4"
-    if post.get("reel", True) and reel.exists():  # Reel tras el carrusel (Reel normal; los «de prueba» exigen un mínimo de seguidores)
+    if post.get("reel", True) and reel.exists() and not resultado.get("reel_id"):  # Reel normal; los «de prueba» exigen un mínimo de seguidores
         try:
+            time.sleep(20)  # respiro tras el carrusel para no disparar el límite de peticiones
             datos = {"media_type": "REELS", "video_url": url_publica(reel), "caption": post.get("pie", "")}
             portada = carpeta / "img" / "reel_portada.jpg"
             if portada.exists():
@@ -104,7 +124,14 @@ def publicar(carpeta, post):
                 datos["share_to_feed"] = "true"
             r = api("POST", f"{USER}/media", **datos)["id"]
             esperar(r, intentos=40, pausa=15)  # los vídeos tardan más en procesarse
-            resultado["reel_id"] = api("POST", f"{USER}/media_publish", creation_id=r)["id"]
+            try:
+                resultado["reel_id"] = api("POST", f"{USER}/media_publish", creation_id=r)["id"]
+            except RuntimeError as e:
+                if "2207051" not in str(e):
+                    raise
+                time.sleep(30)  # igual que el carrusel: Instagram suele publicarlo pese al error
+                resultado["reel_id"] = reel_publicado(post) or "desconocido"
+                resultado["reel_nota"] = "media_publish devolvió 2207051; " + ("reel encontrado en la cuenta" if resultado["reel_id"] != "desconocido" else "no se encontró: revisar a mano")
             resultado["reel_prueba"] = bool(post.get("reel_prueba", False))
         except Exception as e:
             resultado["reel_error"] = str(e); print("   AVISO reel:", e)
@@ -125,6 +152,27 @@ if __name__ == "__main__":
         if ahora < hasta:
             print(f"Instagram bloqueó la publicación ({b.get('error', '')[:200]}). En pausa hasta {hasta} UTC; borra {BLOQUEO.name} para reintentar antes.")
             sys.exit(0)
+    for carpeta in sorted((RAIZ / "posts").iterdir()):  # Reels pendientes de posts ya publicados (máx. REEL_PENDIENTE_H)
+        f, pj = carpeta / "post.json", carpeta / "publicado.json"
+        if DRY or not (f.exists() and pj.exists() and (carpeta / "img" / "reel.mp4").exists() and TOKEN and USER and REPO):
+            continue
+        res = json.loads(pj.read_text(encoding="utf-8")); post = json.loads(f.read_text(encoding="utf-8"))
+        if res.get("reel_id") or res.get("reel_error") or not post.get("reel", True):
+            continue
+        if ahora - dt.datetime.fromisoformat(res["publicado_utc"]) > dt.timedelta(hours=REEL_PENDIENTE_H):
+            continue
+        print(f"[{carpeta.name}] el carrusel está publicado pero falta el Reel: publicándolo…")
+        try:
+            existente = reel_publicado(post)
+        except Exception as e:
+            existente = None; print("   AVISO: no se pudo comprobar si el Reel ya estaba:", e)
+        if existente:
+            res["reel_id"] = existente
+        else:
+            res = extras(carpeta, {**post, "story_auto": False}, res)
+        pj.write_text(json.dumps(res, indent=1), encoding="utf-8")
+        print(f"[{carpeta.name}] Reel: {res.get('reel_id') or res.get('reel_error')}")
+        break  # uno por pasada, para no saturar la cuenta
     for carpeta in sorted((RAIZ / "posts").iterdir()):
         f = carpeta / "post.json"
         if not f.exists() or (carpeta / "publicado.json").exists() or not (carpeta / "img" / "01.jpg").exists():
@@ -147,6 +195,7 @@ if __name__ == "__main__":
             previo = None; print(f"[{carpeta.name}] AVISO: no se pudo comprobar si ya estaba publicado: {e}")
         if previo:
             previo["nota"] = "ya estaba publicado en Instagram (detectado antes de publicar); no se repite"
+            previo = extras(carpeta, post, previo)
             (carpeta / "publicado.json").write_text(json.dumps(previo, indent=1), encoding="utf-8")
             print(f"[{carpeta.name}] ya estaba publicado: {previo}"); continue
         print(f"[{carpeta.name}] publicando ({post.get('audiencia', '')})…")
@@ -164,6 +213,7 @@ if __name__ == "__main__":
                     previo = None
                 if previo:
                     previo["nota"] = f"Instagram devolvió error pero el post se publicó: {str(e)[:300]}"
+                    previo = extras(carpeta, post, previo)
                     (carpeta / "publicado.json").write_text(json.dumps(previo, indent=1), encoding="utf-8")
                     print(f"[{carpeta.name}] publicado pese al error de Instagram: {previo}"); continue
             fallos += 1; print(f"[{carpeta.name}] ERROR: {e}")
