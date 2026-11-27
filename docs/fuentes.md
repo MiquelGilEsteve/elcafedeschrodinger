@@ -113,3 +113,8 @@ Si se quiere más contenido latinoamericano, se pueden probar (no comprobadas a�
 - **pnas.org** se lee con Firecrawl (`formats: ["query"]`, `mode: "directQuote"`): resumen, cifras del texto y fechas (en línea / número). Antes figuraba como «PNAS no se lee».
 - **parquesnacionales.gov.co/sala-prensa/noticias/…** (Parques Nacionales Naturales de Colombia) se lee con Firecrawl: notas oficiales con cifras. **novataxa.blogspot.com** da el resumen y el DOI de especies nuevas (Zootaxa), pero la página es enorme: extraer con Python del archivo guardado.
 - Búsqueda en Commons: añadir `filetype:bitmap` a `gsrsearch` evita cientos de PDF escaneados; `Category:Wildfires_in_Spain` tiene pocas fotos útiles. Mirar siempre la miniatura: «Fuegos entre arboles.jpg» son fuegos artificiales.
+
+## 18. Notas 2026-11-27
+- **ocu.org/organizacion/prensa/notas-de-prensa/…** (notas de prensa de la OCU) se lee entero con Firecrawl (markdown). Las cifras de los medios sobre la OCU (Infobae) mezclaban datos de 2025 y de 2026 e incluían porcentajes que no están en la OCU: citar siempre la nota de la OCU.
+- **blog.google** se lee con Firecrawl (markdown) y trae países de disponibilidad; también hay proveedor Alexandria `blog-google` (`company-blog/search_posts`, `get_post`). Las webs en español que resumen anuncios de Google (wwwhatsnew, iaparahoy…) a veces traducen mal: comprobar en el blog oficial.
+- Desde el shell del 27-nov, curl/requests a commons.wikimedia.org siguen bloqueados (403 del proxy): las fotos solo salen en el render de GitHub.
