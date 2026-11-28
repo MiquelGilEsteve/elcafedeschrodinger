@@ -1,0 +1,19 @@
+Caída de Microsoft 365, Outlook y Teams: casi 24 horas sin servicio y el aviso de Brad Smith, presidente de Microsoft, sobre más apagones tecnológicos ⚠️
+
+Del 12 al 13 de noviembre, el correo en la nube de Microsoft (Exchange Online) y servicios que dependen de él, como Outlook, Teams o Copilot, fallaron en todo el mundo durante casi 24 horas. Afectó a gobiernos y empresas de Australia a Estados Unidos.
+
+• Según memorandos internos que ha visto Reuters, es el incidente con más clientes afectados de la historia de Exchange Online. Microsoft declaró un «Código Rojo»: quiere resolver las próximas caídas en menos de una hora.
+• La causa, según la empresa: ni un ciberataque ni la IA, sino una «tormenta perfecta» entre una actualización de software de hace cuatro meses, otra nueva y un cambio en el tráfico de red. Lleva 9 medidas aplicadas y anuncia 13 más.
+• No fue la única: el 13 de noviembre, la FAA paró todos los despegues en Estados Unidos durante casi cinco horas por un fallo de telecomunicaciones que afectó a 17 de sus 22 grandes centros de control aéreo (causa distinta: la instalación de nuevos routers).
+
+En Face the Nation (CBS, 22 de noviembre), Smith explicó por qué cree que vendrán más: la IA permite encontrar vulnerabilidades en el código mucho más rápido, tanto a quien las arregla como a quien quiere atacar. Todos parchean «a un ritmo nunca visto» y, con sistemas antiguos y menos tiempo para probar los cambios, aumenta el riesgo de que algo falle. «Tenemos que estar preparados para los próximos meses», dijo.
+
+Su consejo para todos: instalar las actualizaciones de seguridad del móvil y del ordenador en cuanto lleguen.
+
+¿Te afectó la caída del 12 de noviembre?
+
+Fuentes: entrevista a Brad Smith en Face the Nation, CBS News (22-nov-2026, transcripción); Reuters, «Microsoft declares Code Red after historic outage» (24-nov-2026); Congressional Research Service (FAA). Visto en Infobae (25-nov-2026).
+
+Foto: centro de datos de Microsoft en Middenmeer (Países Bajos), Hay Kranen, CC BY 4.0, Wikimedia Commons.
+
+#Microsoft #Outlook #ciberseguridad #tecnologia #elcafedeschrodinger

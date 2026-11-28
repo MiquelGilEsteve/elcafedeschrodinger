@@ -1,0 +1,21 @@
+Hipótesis de Riemann demostrada con ayuda de la IA Claude: qué se ha logrado de verdad y qué falta 🧮
+
+En 1859, Bernhard Riemann propuso que todos los ceros no triviales de la función zeta tienen parte real 1/2. Si es cierto, los números primos siguen un orden muy preciso. Es uno de los siete Problemas del Milenio del Instituto Clay (1 millón de dólares).
+
+Lo que ha pasado:
+• El 20 de noviembre de 2026, Levent Alpöge, matemático de Anthropic, escribió: «Creo que, trabajando con Claude, he descubierto una demostración de la hipótesis de Riemann».
+• No publicó un artículo, sino la prueba completa en Lean, un lenguaje con el que una computadora comprueba cada paso: unos 17 millones de líneas.
+• El 21 de noviembre, el Lean FRO y la Mathlib Initiative certificaron que el enunciado es el correcto y que la prueba es válida, con varios verificadores independientes.
+• Después, investigadores de Anthropic, también con Claude, publicaron una versión un 99 % más corta (unas 113.000 líneas), comprobada por Andrew Sutherland (MIT) y Michael Rubinstein (Univ. de Waterloo).
+
+Lo que falta: entenderla. En el blog de Terence Tao se ha lanzado un proyecto para escribirla de forma legible. Y el Instituto Clay solo da el premio tras publicarse en una revista, pasar al menos dos años y lograr la aceptación general.
+
+Desde Chile, Héctor Pasten (Pontificia Universidad Católica) dijo a Scientific American que, si la prueba es correcta y se entiende, sería «algo así como una piedra Rosetta» entre ramas de las matemáticas.
+
+¿Te parece un triunfo humano o de la máquina?
+
+Fuentes: Levent Alpöge (alpo.ge/remark.pdf, 20-nov-2026); Lean FRO y Mathlib Initiative (21-nov-2026); heise (26-nov-2026); Scientific American (20-nov-2026); Instituto Clay.
+
+Imagen: primera página del artículo de Riemann de 1859 (Obras, 1876), dominio público, Wikimedia Commons.
+
+#matematicas #hipotesisderiemann #inteligenciaartificial #Claude #elcafedeschrodinger
