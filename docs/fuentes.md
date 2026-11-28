@@ -118,3 +118,8 @@ Si se quiere más contenido latinoamericano, se pueden probar (no comprobadas a�
 - **ocu.org/organizacion/prensa/notas-de-prensa/…** (notas de prensa de la OCU) se lee entero con Firecrawl (markdown). Las cifras de los medios sobre la OCU (Infobae) mezclaban datos de 2025 y de 2026 e incluían porcentajes que no están en la OCU: citar siempre la nota de la OCU.
 - **blog.google** se lee con Firecrawl (markdown) y trae países de disponibilidad; también hay proveedor Alexandria `blog-google` (`company-blog/search_posts`, `get_post`). Las webs en español que resumen anuncios de Google (wwwhatsnew, iaparahoy…) a veces traducen mal: comprobar en el blog oficial.
 - Desde el shell del 27-nov, curl/requests a commons.wikimedia.org siguen bloqueados (403 del proxy): las fotos solo salen en el render de GitHub.
+
+## 19. Notas 2026-11-28
+- **cbsnews.com** da transcripciones completas de Face the Nation (`/news/transcript-…`) que se leen con Firecrawl: fuente primaria de citas. **reuters.com** se lee entero con Firecrawl (markdown).
+- **leanprover-community.github.io/blog** (declaraciones oficiales del Lean FRO/Mathlib), **alpo.ge/remark.pdf** (`parsers: ["pdf"]`) y **heise.de/en** se leen con Firecrawl. claymath.org da solo el aviso de cookies.
+- Commons: los escaneos de las obras de Riemann están como PNG por página (`De_Bernhard_Riemann_Mathematische_Werke_NNN.png`, p. 136 = artículo de 1859 sobre los primos); las miniaturas de páginas de PDF (`page1-…pdf.jpg`) dieron error 400.
